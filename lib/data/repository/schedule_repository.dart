@@ -1,10 +1,8 @@
 // data/repositories/schedule_repository.dart
 import 'package:sqflite/sqflite.dart';
-import 'package:wasteful/core/constants/bin_types.dart';
 import 'package:wasteful/data/db/app_db.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/data/model/schedule.dart';
-
 
 class ScheduleRepository {
   Future<Database> get _db async => AppDatabase.instance.database;
@@ -16,8 +14,7 @@ class ScheduleRepository {
 
   Future<void> updateAddress(Address address) async {
     final db = await _db;
-    await db.update('addresses', address.toMap(),
-        where: 'id = ?', whereArgs: [address.id]);
+    await db.update('addresses', address.toMap(), where: 'id = ?', whereArgs: [address.id]);
   }
 
   Future<void> deleteAddress(String id) async {
@@ -39,34 +36,14 @@ class ScheduleRepository {
 
   Future<void> addSchedule(String addressId, Schedule schedule) async {
     final db = await _db;
-    await db.transaction((txn) async {
-      final map = schedule.toMap()..['address_id'] = addressId;
-      await txn.insert('schedules', map);
-
-      for (final bin in schedule.binTypes) {
-        await txn.insert('schedule_bin_types', {
-          'schedule_id': schedule.id,
-          'bin_type': bin.name,
-        });
-      }
-    });
+    final map = schedule.toMap()..['address_id'] = addressId;
+    await db.insert('schedules', map); // no transaction needed — single insert
   }
 
   Future<void> updateSchedule(String addressId, Schedule schedule) async {
     final db = await _db;
-    await db.transaction((txn) async {
-      final map = schedule.toMap()..['address_id'] = addressId;
-      await txn.update('schedules', map, where: 'id = ?', whereArgs: [schedule.id]);
-
-      await txn.delete('schedule_bin_types',
-          where: 'schedule_id = ?', whereArgs: [schedule.id]);
-      for (final bin in schedule.binTypes) {
-        await txn.insert('schedule_bin_types', {
-          'schedule_id': schedule.id,
-          'bin_type': bin.name,
-        });
-      }
-    });
+    final map = schedule.toMap()..['address_id'] = addressId;
+    await db.update('schedules', map, where: 'id = ?', whereArgs: [schedule.id]);
   }
 
   Future<void> deleteSchedule(String id) async {
@@ -92,18 +69,6 @@ class ScheduleRepository {
       whereArgs: [addressId],
     );
 
-    final schedules = <Schedule>[];
-    for (final map in scheduleMaps) {
-      final binRows = await db.query(
-        'schedule_bin_types',
-        where: 'schedule_id = ?',
-        whereArgs: [map['id']],
-      );
-      final binTypes = binRows
-          .map((r) => BinType.values.firstWhere((b) => b.name == r['bin_type']))
-          .toList();
-      schedules.add(Schedule.fromMap(map, binTypes));
-    }
-    return schedules;
+    return scheduleMaps.map((map) => Schedule.fromMap(map)).toList();
   }
 }

@@ -1,0 +1,23 @@
+
+[
+  {
+    "question": "Why isn't my collection day showing correctly?",
+    "answer": "Wasteful doesn't pull live data from your council — you enter your own schedule based on what your council tells you. If your council changes your collection day, you'll need to update your schedule in Manage Address and Schedule."
+  },
+  {
+    "question": "What does \"evening before\" mean for reminders?",
+    "answer": "By default, reminders fire the evening before your collection day at a time you set in Settings. You can also switch to \"morning of\" reminders, or set a custom time for any individual schedule."
+  },
+  {
+    "question": "Can I track more than one address?",
+    "answer": "Yes. Add as many addresses as you need from the Address dropdown when creating a schedule, or manage them all under Manage Address and Schedule in Settings."
+  },
+  {
+    "question": "My council isn't in the search list — what do I do?",
+    "answer": "Search \"bin collection days\" plus your area name to find your council's page, then set up your schedule manually using Add Schedule."
+  },
+  {
+    "question": "Is my data shared with my council or anyone else?",
+    "answer": "No. Your addresses and schedules are stored only on your device. Find My Council only opens your council's own website in your browser — nothing is sent anywhere."
+  }
+]

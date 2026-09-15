@@ -2,7 +2,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:wasteful/data/repository/settings_repository.dart';
-import '../../core/constants/reminder_timing.dart';
+import '../../../core/constants/reminder_timing.dart';
 
 final settingsRepositoryProvider = Provider((ref) => SettingsRepository());
 

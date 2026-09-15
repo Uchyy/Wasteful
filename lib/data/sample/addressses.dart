@@ -27,7 +27,7 @@ class SampleAddresses {
           schedules: [
             Schedule(
               id: 'sch-1',
-              binTypes: [BinType.recycling, BinType.general],
+              binTypes:BinType.recycling,
               collectionWeekday: DateTime.tuesday,
               repeatInterval: RepeatInterval.everyTwoWeeks,
               startDate: _now.subtract(const Duration(days: 3)),
@@ -38,7 +38,7 @@ class SampleAddresses {
             ),
             Schedule(
               id: 'sch-2',
-              binTypes: [BinType.garden],
+              binTypes: BinType.garden,
               collectionWeekday: DateTime.friday,
               repeatInterval: RepeatInterval.everyThreeWeeks,
               startDate: _now.add(const Duration(days: 1)),
@@ -49,7 +49,7 @@ class SampleAddresses {
             ),
             Schedule(
               id: 'sch-3',
-              binTypes: [BinType.recycling, BinType.general],
+              binTypes: BinType.general,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.weekly,                      // weekly, so it always lands correctly
               startDate: _now.subtract(const Duration(days: 7)), // any past date works with repeatWeeks: 1
@@ -73,7 +73,7 @@ class SampleAddresses {
           schedules: [
             Schedule(
               id: 'sch-5',
-              binTypes: [BinType.general, BinType.food],
+              binTypes: BinType.food,
               collectionWeekday: DateTime.friday,
               repeatInterval: RepeatInterval.weekly,
               startDate: _now.subtract(const Duration(days: 1)),
@@ -85,7 +85,7 @@ class SampleAddresses {
 
             Schedule(
               id: 'sch-6',
-              binTypes: [BinType.recycling, BinType.general],
+              binTypes: BinType.recycling,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.weekly,                      // weekly, so it always lands correctly
               startDate: _now.subtract(const Duration(days: 7)), // any past date works with repeatWeeks: 1
@@ -97,7 +97,7 @@ class SampleAddresses {
 
              Schedule(
               id: 'sch-6',
-              binTypes: [BinType.general],
+              binTypes: BinType.general,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.everyTwoWeeks,                      // weekly, so it always lands correctly
               startDate: _now.subtract(const Duration(days: 7)), // any past date works with repeatWeeks: 1

@@ -12,7 +12,7 @@ class WasteTypeSelector extends StatefulWidget {
   const WasteTypeSelector({
     super.key,
     required this.entries,
-    this.onSelected,
+    this.onSelected, BinType? initialValue,
   });
 
   @override
@@ -98,7 +98,7 @@ class _WasteCard extends StatelessWidget {
               binType.label,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.black,
+                    color: isSelected ? Colors.black : colors.inverseBackground,
                     fontSize: context.fontSize(FontSize.normal),
                     fontWeight: FontWeight.w700,
                   ),

@@ -1,62 +1,65 @@
 // features/home/home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wasteful/core/constants/bin_types.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/utils/getOrdinalDate.dart';
 import 'package:wasteful/core/widgets/app_bar.dart';
-import 'package:wasteful/core/widgets/app_icon.dart';
 import 'package:wasteful/core/widgets/section_wrapper.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/home/widgets/address_dropdown.dart';
 import 'package:wasteful/features/home/widgets/swipeable_due_card.dart';
+import 'package:wasteful/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  bool _showAllUpcoming = false;
+
+  @override
+  Widget build(BuildContext context) {
     final colors = context.colors;
     final addresses = ref.watch(addressesProvider);
     final selectedAddressId = ref.watch(selectedAddressIdProvider);
-    //final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-   
-    final relevantAddresses = selectedAddressId == null ? addresses : addresses.where((a) => a.id == selectedAddressId).toList();
+
+    final isAllSelected = selectedAddressId == null || selectedAddressId == kAllAddressesValue;
+    final relevantAddresses = isAllSelected ? addresses : addresses.where((a) => a.id == selectedAddressId).toList();
+
     final allSchedules = relevantAddresses.expand((a) => a.schedules).where((s) => !s.isArchived).toList();
 
-    // 1. Due tonight
     final dueTonight = allSchedules.where((s) => s.isDueTonight).toList();
-
-    // 2. Upcoming (everything else, soonest first)
     final upcoming = allSchedules.where((s) => !s.isDueTonight).toList()..sort((a, b) => a.nextCollectionDate().compareTo(b.nextCollectionDate()));
+
+    const previewLimit = 3;
+    final hasMore = upcoming.length > previewLimit;
+    final visibleUpcoming = (_showAllUpcoming || !hasMore) ? upcoming : upcoming.take(previewLimit).toList();
 
     if (addresses.isEmpty) {
       return Scaffold(
         appBar: CustomAppBar(
           title: "Wasteful",
+          centerTitle: false,
           showBack: false,
         ),
         body: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: Center(
+            
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.padding(PaddingSize.small).horizontal * 0.5,
-                  vertical: context.padding(PaddingSize.small).vertical * 0.2,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    AppIcon(),
-                  ],
-                ),
-              ),
-
+            
               Icon(Icons.location_off_outlined, size: 46, color: colors.textMuted),
               const SizedBox(height: 16),
 
@@ -68,8 +71,23 @@ class HomeScreen extends ConsumerWidget {
                 style: TextStyle(fontSize: 12, color: colors.textMuted),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {}, child: const Text('+ Add an address')),
+              ElevatedButton(
+                onPressed: () {
+                  context.go(AppRoutes.addSchedule);
+                }, 
+                style: ButtonStyle(
+                  elevation: const WidgetStatePropertyAll<double>(4), 
+                  foregroundColor: WidgetStatePropertyAll<Color>(Colors.redAccent),
+                  padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                    EdgeInsets.symmetric(vertical: context.padding(PaddingSize.small).vertical,
+                    horizontal: context.padding(PaddingSize.medium).horizontal
+                    ),
+                  ),
+                ),
+                child: const Text('+ Add a Schedule')
+              ),
             ],
+            ),
           ),
         ),
       );
@@ -78,6 +96,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: "Wasteful",
+        centerTitle: false,
         showBack: false,
         actionWidget: addresses.isNotEmpty ? const AddressDropdown() : null,
       ),
@@ -89,8 +108,9 @@ class HomeScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [ 
               const SizedBox(height: 20),
+
               Text(
-                "Hey, bins are calling!",
+                "👋 Hello, bins are calling!",
                 style: TextStyle(
                   fontFamily: GoogleFonts.lilitaOne().fontFamily,
                   letterSpacing: 2,
@@ -118,50 +138,59 @@ class HomeScreen extends ConsumerWidget {
 
               upcoming.isNotEmpty 
               ? SectionCard(
-                  title: 'Upcoming',
-                  backgroundColor: colors.inverseBackground,
-                  //contentPadding: EdgeInsets.zero,
-                  actionButton: upcoming.isNotEmpty
+                title: 'Upcoming',
+                backgroundColor: colors.inverseBackground,
+                actionButton: hasMore
                     ? TextButton(
-                        onPressed: () {},
+                        onPressed: () => setState(() => _showAllUpcoming = !_showAllUpcoming),
                         child: Text(
-                          'See all',
-                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent, fontSize: context.fontSize(FontSize.large) * 0.8 ),
+                          _showAllUpcoming ? 'Show less' : 'See all',
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: colors.accent,
+                                fontSize: context.fontSize(FontSize.large) * 0.8,
+                              ),
                         ),
                       )
                     : null,
-                  children: [
-                    for (int i = 0; i < upcoming.length; i++) ...[
-                      ListTile(
-                        contentPadding: context.padding(PaddingSize.small) * 0.5,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-                        leading: upcoming[i].binTypes.first == BinType.general
-                          ? upcoming[i].binTypes.first.getfallBackIcon(size: context.fontSize(FontSize.extraLarge) * 2)
-                          : upcoming[i].binTypes.first.icon(size: context.fontSize(FontSize.extraLarge) * 2),
-                        title: Text(
-                          getOrdinalDate(upcoming[i].nextCollectionDate()),
-                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: colors.textPrimary,  fontSize: context.fontSize(FontSize.normal) ),
-                        ),
-                        subtitle: Text(
-                          upcoming[i].binTypes.map((b) => b.label).join(' + '),
-                          style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: colors.textSecondary, letterSpacing: 1.5, fontSize: context.fontSize(FontSize.normal) * 0.5),
-                        ),
+                children: [
+                  for (int i = 0; i < visibleUpcoming.length; i++) ...[
+                    ListTile(
+                      contentPadding: context.padding(PaddingSize.small) * 0.5,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+                      leading: visibleUpcoming[i].binTypes == BinType.general
+                          ? visibleUpcoming[i].binTypes.getfallBackIcon(size: context.fontSize(FontSize.extraLarge) * 2)
+                          : visibleUpcoming[i].binTypes.icon(size: context.fontSize(FontSize.extraLarge) * 2),
+                      title: Text(
+                        getOrdinalDate(visibleUpcoming[i].nextCollectionDate()),
+                        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                              color: colors.textPrimary,
+                              fontSize: context.fontSize(FontSize.normal),
+                            ),
                       ),
-                    ]
+                      subtitle: Text(
+                        visibleUpcoming[i].binTypes.label,
+                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                              color: colors.textSecondary,
+                              letterSpacing: 1.5,
+                              fontSize: context.fontSize(FontSize.normal) * 0.5,
+                            ),
+                      ),
+                    ),
                   ],
-                )
-              : Container (
-                //margin: context.padding(PaddingSize.small),
-                alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(vertical: context.padding(PaddingSize.large).vertical * 2,),
-                margin: EdgeInsets.only(top: context.padding(PaddingSize.medium).top),
-                decoration: BoxDecoration(
-                  color: colors.surface,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: colors.border),
-                ),
-                child: const Text('No upcoming items'),
-              ), 
+                ],
+              )
+              : SectionCard(
+                title: "Upcoming",
+                children: [
+                   Container (
+                    //margin: context.padding(PaddingSize.small),
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(vertical: context.padding(PaddingSize.large).vertical * 2,),
+                    margin: EdgeInsets.only(top: context.padding(PaddingSize.medium).top),
+                    child: const Text('No upcoming items'),
+                  ), 
+                ]
+              )
 
             ],
           ),
@@ -174,6 +203,3 @@ class HomeScreen extends ConsumerWidget {
 }
 
 
-
-//for (final entry in dueSchedules)
- // Text('${entry.address.label}: ${entry.schedule.binTypes.map((b) => b.label).join(" + ")}')

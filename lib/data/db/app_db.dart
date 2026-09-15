@@ -20,7 +20,7 @@ class AppDatabase {
 
     return openDatabase(
       path,
-      version: 1,
+      version: 1, // bump this number whenever the schema below changes
       onConfigure: (db) async => db.execute('PRAGMA foreign_keys = ON'),
       onCreate: (db, version) async {
         await db.execute('''
@@ -36,6 +36,7 @@ class AppDatabase {
           CREATE TABLE schedules (
             id TEXT PRIMARY KEY,
             address_id TEXT NOT NULL,
+            bin_type TEXT NOT NULL,
             collection_weekday INTEGER NOT NULL,
             repeat_interval TEXT NOT NULL,
             start_date TEXT NOT NULL,
@@ -43,19 +44,21 @@ class AppDatabase {
             is_archived INTEGER NOT NULL DEFAULT 0,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
-            FOREIGN KEY (address_id) REFERENCES addresses (id) ON DELETE CASCADE
-          )
+            FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
+          );
         ''');
-
-        // Join table: a schedule can cover multiple bin types
-        await db.execute('''
-          CREATE TABLE schedule_bin_types (
-            schedule_id TEXT NOT NULL,
-            bin_type TEXT NOT NULL,
-            PRIMARY KEY (schedule_id, bin_type),
-            FOREIGN KEY (schedule_id) REFERENCES schedules (id) ON DELETE CASCADE
-          )
-        ''');
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        // Runs automatically when an existing install's db version is
+        // lower than the `version` above. Add migration steps here as
+        // the schema evolves — e.g.:
+        //
+        // if (oldVersion < 2) {
+        //   await db.execute('ALTER TABLE schedules ADD COLUMN some_new_column TEXT');
+        // }
+        // if (oldVersion < 3) {
+        //   await db.execute('ALTER TABLE addresses ADD COLUMN postcode TEXT');
+        // }
       },
     );
   }

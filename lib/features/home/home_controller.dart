@@ -1,62 +1,49 @@
 // features/home/home_controller.dart
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/data/model/schedule.dart';
-import 'package:wasteful/data/sample/addressses.dart';
+import 'package:wasteful/data/repository/schdeule_provider.dart';
 
 class AddressesNotifier extends StateNotifier<List<Address>> {
-  AddressesNotifier() : super(SampleAddresses.multiple()); // swap to .single()/.empty() to test other states
+  final Ref ref;
 
-  void add(Address address) {
-    state = [...state, address];
+  AddressesNotifier(this.ref) : super([]) {
+    _loadFromDb();
   }
 
-  void remove(String addressId) {
-    state = state.where((a) => a.id != addressId).toList();
+  Future<void> _loadFromDb() async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    state = await repository.getAddresses();
   }
 
-  void update(Address updated) {
-    state = [
-      for (final a in state) a.id == updated.id ? updated : a,
-    ];
+  Future<void> refresh() => _loadFromDb();
+
+  Future<void> add(Address address) async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    await repository.addAddress(address);
+    await _loadFromDb();
   }
 
-  void addScheduleToAddress(String addressId, Schedule schedule) {
-    state = [
-      for (final a in state)
-        if (a.id == addressId)
-          a.copyWith(schedules: [...a.schedules, schedule])
-        else
-          a,
-    ];
+  Future<void> remove(String addressId) async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    await repository.deleteAddress(addressId);
+    await _loadFromDb();
   }
 
-  void removeScheduleFromAddress(String addressId, String scheduleId) {
-    state = [
-      for (final a in state)
-        if (a.id == addressId)
-          a.copyWith(schedules: a.schedules.where((s) => s.id != scheduleId).toList())
-        else
-          a,
-    ];
+  Future<void> updateSchedule(String addressId, Schedule schedule) async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    await repository.updateSchedule(addressId, schedule);
+    await _loadFromDb();
   }
 
-  void updateSchedule(String addressId, Schedule updatedSchedule) {
-    state = [
-      for (final a in state)
-        if (a.id == addressId)
-          a.copyWith(
-            schedules: [
-              for (final s in a.schedules)
-                s.id == updatedSchedule.id ? updatedSchedule : s,
-            ],
-          )
-        else
-          a,
-    ];
+  Future<void> removeScheduleFromAddress(String addressId, String scheduleId) async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    await repository.deleteSchedule(scheduleId);
+    await _loadFromDb();
   }
 }
 
 final addressesProvider = StateNotifierProvider<AddressesNotifier, List<Address>>(
-  (ref) => AddressesNotifier(),
+  (ref) => AddressesNotifier(ref),
 );

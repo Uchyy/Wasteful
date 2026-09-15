@@ -1,0 +1,2132 @@
+[
+  {
+    "council": "Aberdeen City Council",
+    "city": "Aberdeen",
+    "country": "Scotland",
+    "url": "https://integration.aberdeencity.gov.uk/service/Household_Waste_collection_Calendar"
+  },
+  {
+    "council": "Aberdeenshire Council",
+    "city": "Aberdeenshire",
+    "country": "Scotland",
+    "url": "https://online.aberdeenshire.gov.uk/Apps/Waste-Collections/"
+  },
+  {
+    "council": "Adur District Council",
+    "city": "Adur",
+    "country": "England",
+    "url": "https://www.adur-worthing.gov.uk/bin-day/"
+  },
+  {
+    "council": "Amber Valley Borough Council",
+    "city": "Amber Valley",
+    "country": "England",
+    "url": "https://www.ambervalley.gov.uk/rubbish-waste-and-recycling"
+  },
+  {
+    "council": "Angus Council",
+    "city": "Angus",
+    "country": "Scotland",
+    "url": "https://www.angus.gov.uk/bins_and_recycling/bin_collection_days"
+  },
+  {
+    "council": "Antrim and Newtownabbey Borough Council",
+    "city": "Antrim and Newtownabbey",
+    "country": "Northern Ireland",
+    "url": "http://www.antrimandnewtownabbey.gov.uk/Residents/Waste-Recycling/Antrim-Bin-Checker"
+  },
+  {
+    "council": "Ards and North Down Borough Council",
+    "city": "Ards and North Down",
+    "country": "Northern Ireland",
+    "url": "http://www.ardsandnorthdown.gov.uk/resident/bins-and-recycling/bin-collection-dates"
+  },
+  {
+    "council": "Argyll and Bute Council",
+    "city": "Argyll and Bute",
+    "country": "Scotland",
+    "url": "https://www.argyll-bute.gov.uk/planning-and-environment/bin-collection"
+  },
+  {
+    "council": "Armagh City, Banbridge and Craigavon Borough Council",
+    "city": "Armagh City, Banbridge and Craigavon",
+    "country": "Northern Ireland",
+    "url": "https://www.armaghbanbridgecraigavon.gov.uk/resident/when-is-my-bin-day/"
+  },
+  {
+    "council": "Arun District Council",
+    "city": "Arun",
+    "country": "England",
+    "url": "http://www.arun.gov.uk/main.cfm?type=REFUSECOLLECTIONSE"
+  },
+  {
+    "council": "Ashfield District Council",
+    "city": "Ashfield",
+    "country": "England",
+    "url": "https://www.ashfield.gov.uk/residents/waste-and-recycling/"
+  },
+  {
+    "council": "Ashford Borough Council",
+    "city": "Ashford",
+    "country": "England",
+    "url": "http://www.ashford.gov.uk/waste"
+  },
+  {
+    "council": "Babergh District Council",
+    "city": "Babergh",
+    "country": "England",
+    "url": "http://www.babergh.gov.uk/waste-services/collection-days/"
+  },
+  {
+    "council": "Barnsley Metropolitan Borough Council",
+    "city": "Barnsley Metropolitan",
+    "country": "England",
+    "url": "https://www.barnsley.gov.uk/pid524"
+  },
+  {
+    "council": "Basildon Borough Council",
+    "city": "Basildon",
+    "country": "England",
+    "url": "http://www3.basildon.gov.uk/website2/postcodes.nsf/frmMyBasildon?openform"
+  },
+  {
+    "council": "Basingstoke and Deane Borough Council",
+    "city": "Basingstoke and Deane",
+    "country": "England",
+    "url": "http://www.basingstoke.gov.uk/bincollections"
+  },
+  {
+    "council": "Bassetlaw District Council",
+    "city": "Bassetlaw",
+    "country": "England",
+    "url": "https://www.bassetlaw.gov.uk/recycling-and-waste/bin-collection-days"
+  },
+  {
+    "council": "Bath and North East Somerset Council",
+    "city": "Bath and North East Somerset",
+    "country": "England",
+    "url": "https://www.bathnes.gov.uk/rubbish-and-recycling"
+  },
+  {
+    "council": "Bedford Borough Council",
+    "city": "Bedford",
+    "country": "England",
+    "url": "https://apps.bedford.gov.uk/bcs/search.aspx"
+  },
+  {
+    "council": "Belfast City Council",
+    "city": "Belfast",
+    "country": "Northern Ireland",
+    "url": "http://www.belfastcity.gov.uk/bins-recycling/bins/bincollections.aspx"
+  },
+  {
+    "council": "Birmingham City Council",
+    "city": "Birmingham",
+    "country": "England",
+    "url": "https://www.birmingham.gov.uk/info/20009/rubbish_and_recycling"
+  },
+  {
+    "council": "Blaby District Council",
+    "city": "Blaby",
+    "country": "England",
+    "url": "http://my.blaby.gov.uk/collections"
+  },
+  {
+    "council": "Blackburn with Darwen Borough Council",
+    "city": "Blackburn with Darwen",
+    "country": "England",
+    "url": "https://www.blackburn.gov.uk/waste-and-recycling/bins"
+  },
+  {
+    "council": "Blackpool Borough Council",
+    "city": "Blackpool",
+    "country": "England",
+    "url": "http://www.blackpool.gov.uk/Residents/Waste-and-recycling/Bin-collections/Bin-collections.aspx"
+  },
+  {
+    "council": "Blaenau Gwent County Borough Council",
+    "city": "Blaenau Gwent County",
+    "country": "Wales",
+    "url": "https://www.blaenau-gwent.gov.uk/en/resident/waste-recycling/"
+  },
+  {
+    "council": "Bolsover District Council",
+    "city": "Bolsover",
+    "country": "England",
+    "url": "https://www.bolsover.gov.uk/index.php?option=com_content&view=article&id=139"
+  },
+  {
+    "council": "Bolton Metropolitan Borough Council",
+    "city": "Bolton Metropolitan",
+    "country": "England",
+    "url": "https://www.bolton.gov.uk/next-bin-collection"
+  },
+  {
+    "council": "Borough Council of Kings Lynn and West Norfolk",
+    "city": "Borough Council of Kings Lynn and West Norfolk",
+    "country": "England",
+    "url": "https://www.west-norfolk.gov.uk/info/20174/bins_and_recycling_collection_dates"
+  },
+  {
+    "council": "Borough of Broxbourne",
+    "city": "Borough of Broxbourne",
+    "country": "England",
+    "url": "https://ex.broxbourne.gov.uk/resident-recycling-and-waste-recycling/collection-dates-and-recycling-centres"
+  },
+  {
+    "council": "Boston Borough Council",
+    "city": "Boston",
+    "country": "England",
+    "url": "https://www.mybostonuk.com/find-your-bin-day/"
+  },
+  {
+    "council": "Bournemouth, Christchurch and Poole Council",
+    "city": "Bournemouth, Christchurch and Poole",
+    "country": "England",
+    "url": "https://www.bcpcouncil.gov.uk/bins-waste-and-recycling/household-bins"
+  },
+  {
+    "council": "Bracknell Forest Council",
+    "city": "Bracknell Forest",
+    "country": "England",
+    "url": "https://www.bracknell-forest.gov.uk/bins-and-recycling/find-your-collection-day"
+  },
+  {
+    "council": "Braintree District Council",
+    "city": "Braintree",
+    "country": "England",
+    "url": "https://www.braintree.gov.uk/forms/form/283/en/calendar_request_form"
+  },
+  {
+    "council": "Breckland Council",
+    "city": "Breckland",
+    "country": "England",
+    "url": "http://www.breckland.gov.uk/rubbish"
+  },
+  {
+    "council": "Brentwood Borough Council",
+    "city": "Brentwood",
+    "country": "England",
+    "url": "http://www.brentwood.gov.uk/index.php?cid=2715"
+  },
+  {
+    "council": "Bridgend County Borough Council",
+    "city": "Bridgend County",
+    "country": "Wales",
+    "url": "https://www.bridgend.gov.uk/residents/recycling-waste-and-environment/refuse-collections/"
+  },
+  {
+    "council": "Brighton and Hove City Council",
+    "city": "Brighton and Hove",
+    "country": "England",
+    "url": "https://www.brighton-hove.gov.uk/node/321871"
+  },
+  {
+    "council": "Bristol City Council",
+    "city": "Bristol",
+    "country": "England",
+    "url": "http://www.bristol.gov.uk/bins"
+  },
+  {
+    "council": "Broadland District Council",
+    "city": "Broadland",
+    "country": "England",
+    "url": "https://www.southnorfolkandbroadland.gov.uk/rubbish/find-bin-collection-day"
+  },
+  {
+    "council": "Bromsgrove District Council",
+    "city": "Bromsgrove",
+    "country": "England",
+    "url": "http://www.bromsgrove.gov.uk/my-place/bins-and-recycling.aspx"
+  },
+  {
+    "council": "Broxtowe Borough Council",
+    "city": "Broxtowe",
+    "country": "England",
+    "url": "https://www.broxtowe.gov.uk/for-you/waste-and-recycling/"
+  },
+  {
+    "council": "Buckinghamshire Council",
+    "city": "Buckinghamshire",
+    "country": "England",
+    "url": "https://www.buckinghamshire.gov.uk/waste-and-recycling/"
+  },
+  {
+    "council": "Burnley Borough Council",
+    "city": "Burnley",
+    "country": "England",
+    "url": "https://www.burnley.gov.uk/residents/streetscene/recycling-and-waste"
+  },
+  {
+    "council": "Bury Metropolitan Borough Council",
+    "city": "Bury Metropolitan",
+    "country": "England",
+    "url": "http://www.bury.gov.uk/index.aspx?articleid=10493"
+  },
+  {
+    "council": "Caerphilly County Borough Council",
+    "city": "Caerphilly County",
+    "country": "Wales",
+    "url": "http://www.caerphilly.gov.uk/site.aspx?s=ZIyINmF1JYMpiIuezYGXDQ=="
+  },
+  {
+    "council": "Calderdale Metropolitan Borough Council",
+    "city": "Calderdale Metropolitan",
+    "country": "England",
+    "url": "https://www.calderdale.gov.uk/environment/waste/household-collections/collectiondayfinder.jsp"
+  },
+  {
+    "council": "Cambridge City Council",
+    "city": "Cambridge",
+    "country": "England",
+    "url": "https://www.cambridge.gov.uk/check-when-your-bin-will-be-emptied"
+  },
+  {
+    "council": "Cannock Chase District Council",
+    "city": "Cannock Chase",
+    "country": "England",
+    "url": "http://www.cannockchasedc.gov.uk/residents/waste-collection-check-your-dates"
+  },
+  {
+    "council": "Canterbury City Council",
+    "city": "Canterbury",
+    "country": "England",
+    "url": "https://www.canterbury.gov.uk/bin-collections"
+  },
+  {
+    "council": "Carmarthenshire County Council",
+    "city": "Carmarthenshire",
+    "country": "Wales",
+    "url": "https://www.carmarthenshire.gov.wales/home/council-services/recycling-bins-and-litter/recycling-bin-collections/#.WwVmKdMvxTY"
+  },
+  {
+    "council": "Castle Point Borough Council",
+    "city": "Castle Point",
+    "country": "England",
+    "url": "http://www.castlepoint.gov.uk/main.cfm?MenuId=11462"
+  },
+  {
+    "council": "Causeway Coast and Glens Borough Council",
+    "city": "Causeway Coast and Glens",
+    "country": "Northern Ireland",
+    "url": "https://www.causewaycoastandglens.gov.uk/live/bins-and-recycling/recycling/blue-bin-recycling-calendars-1"
+  },
+  {
+    "council": "Central Bedfordshire Council",
+    "city": "Central Bedfordshire",
+    "country": "England",
+    "url": "http://www.centralbedfordshire.gov.uk/waste/bins/collection-day.aspx"
+  },
+  {
+    "council": "Ceredigion County Council",
+    "city": "Ceredigion",
+    "country": "Wales",
+    "url": "https://www.ceredigion.gov.uk/English/Resident/Bins-Recycling/Recycling-Bin-Collection-Dates/Pages/default.aspx"
+  },
+  {
+    "council": "Charnwood Borough Council",
+    "city": "Charnwood",
+    "country": "England",
+    "url": "http://my.charnwood.gov.uk/recycling"
+  },
+  {
+    "council": "Chelmsford City Council",
+    "city": "Chelmsford",
+    "country": "England",
+    "url": "https://www.chelmsford.gov.uk/bins-and-recycling/check-your-collection-day/"
+  },
+  {
+    "council": "Cheltenham Borough Council",
+    "city": "Cheltenham",
+    "country": "England",
+    "url": "http://www.cheltenham.gov.uk/recycling"
+  },
+  {
+    "council": "Cherwell District Council",
+    "city": "Cherwell",
+    "country": "England",
+    "url": "https://www.cherwell.gov.uk/info/10/rubbish-and-recycling"
+  },
+  {
+    "council": "Cheshire East Council",
+    "city": "Cheshire East",
+    "country": "England",
+    "url": "http://online.cheshireeast.gov.uk/MyCollectionDay/"
+  },
+  {
+    "council": "Cheshire West and Chester Council",
+    "city": "Cheshire West and Chester",
+    "country": "England",
+    "url": "http://www.cheshirewestandchester.gov.uk/default.aspx?page=13582"
+  },
+  {
+    "council": "Chesterfield Borough Council",
+    "city": "Chesterfield",
+    "country": "England",
+    "url": "http://www.chesterfield.gov.uk/Bin-Collection-Dates-952.html"
+  },
+  {
+    "council": "Chichester District Council",
+    "city": "Chichester",
+    "country": "England",
+    "url": "http://www.chichester.gov.uk/wastecollectioncalendar"
+  },
+  {
+    "council": "Chorley Council",
+    "city": "Chorley",
+    "country": "England",
+    "url": "https://myaccount.chorley.gov.uk/MyChorley.aspx"
+  },
+  {
+    "council": "City and County of Swansea Council",
+    "city": "City and County of Swansea",
+    "country": "Wales",
+    "url": "https://www.swansea.gov.uk/recycling"
+  },
+  {
+    "council": "City of Bradford Metropolitan District Council",
+    "city": "City of Bradford Metropolitan",
+    "country": "England",
+    "url": "https://www.bradford.gov.uk/recycling-and-waste/bin-collections/check-your-bin-collection-dates/"
+  },
+  {
+    "council": "City of Cardiff Council",
+    "city": "City of Cardiff",
+    "country": "Wales",
+    "url": "https://www.cardiff.gov.uk/collections"
+  },
+  {
+    "council": "City of Edinburgh Council",
+    "city": "City of Edinburgh",
+    "country": "Scotland",
+    "url": "http://www.edinburgh.gov.uk/recycling"
+  },
+  {
+    "council": "City of Lincoln Council",
+    "city": "City of Lincoln",
+    "country": "England",
+    "url": "https://www.lincoln.gov.uk/bins-recycling"
+  },
+  {
+    "council": "City of London Corporation",
+    "city": "City of London Corporation",
+    "country": "England",
+    "url": "http://www.cityoflondon.gov.uk/services/environment-and-planning/waste-and-recycling/household-waste-and-recycling/Pages/household-recycling.aspx"
+  },
+  {
+    "council": "City of Westminster",
+    "city": "City of Westminster",
+    "country": "England",
+    "url": "http://cleanstreets.westminster.gov.uk/"
+  },
+  {
+    "council": "City of Wolverhampton Council",
+    "city": "City of Wolverhampton",
+    "country": "England",
+    "url": "http://www.wolverhampton.gov.uk/bincollections"
+  },
+  {
+    "council": "City of York Council",
+    "city": "City of York",
+    "country": "England",
+    "url": "https://www.york.gov.uk/WasteCollectionCalendar"
+  },
+  {
+    "council": "Clackmannanshire Council",
+    "city": "Clackmannanshire",
+    "country": "Scotland",
+    "url": "http://www.clacks.gov.uk/environment/wastecollection/"
+  },
+  {
+    "council": "Colchester City Council",
+    "city": "Colchester",
+    "country": "England",
+    "url": "https://www.colchester.gov.uk/check-my-collection-day/#ValidationSummaryEntityFormView"
+  },
+  {
+    "council": "Comhairle nan Eilean Siar",
+    "city": "Comhairle nan Eilean Siar",
+    "country": "Scotland",
+    "url": "https://cne-siar.gov.uk/popular-tasks/bins-and-recycling/"
+  },
+  {
+    "council": "Conwy County Borough Council",
+    "city": "Conwy County",
+    "country": "Wales",
+    "url": "http://www.conwy.gov.uk/en/Resident/Recycling-and-Waste/Recycling-and-Waste.aspx"
+  },
+  {
+    "council": "Cornwall Council",
+    "city": "Cornwall",
+    "country": "England",
+    "url": "http://www.cornwall.gov.uk/my-area"
+  },
+  {
+    "council": "Cotswold District Council",
+    "city": "Cotswold",
+    "country": "England",
+    "url": "https://www.cotswold.gov.uk/bins-and-recycling/check-your-collection-day/"
+  },
+  {
+    "council": "Council of the Isles of Scilly",
+    "city": "Council of the Isles of Scilly",
+    "country": "England",
+    "url": "http://www.scilly.gov.uk/waste"
+  },
+  {
+    "council": "Coventry City Council",
+    "city": "Coventry",
+    "country": "England",
+    "url": "https://www.coventry.gov.uk/rubbish-recycling/household-bins"
+  },
+  {
+    "council": "Crawley Borough Council",
+    "city": "Crawley",
+    "country": "England",
+    "url": "https://crawley.gov.uk/waste-and-recycling/household-collections/collection-days"
+  },
+  {
+    "council": "Dacorum Borough Council",
+    "city": "Dacorum",
+    "country": "England",
+    "url": "http://www.dacorum.gov.uk/home/environment-street-care/recycling-refuse-waste/household-waste-recycling/your-waste-collection-calendar"
+  },
+  {
+    "council": "Darlington Borough Council",
+    "city": "Darlington",
+    "country": "England",
+    "url": "https://www.darlington.gov.uk/bins-waste-and-recycling/collection-day-lookup/"
+  },
+  {
+    "council": "Dartford Borough Council",
+    "city": "Dartford",
+    "country": "England",
+    "url": "http://www.dartford.gov.uk/refuse"
+  },
+  {
+    "council": "Denbighshire County Council",
+    "city": "Denbighshire",
+    "country": "Wales",
+    "url": "https://www.denbighshire.gov.uk/en/bins-and-recycling/bins-recycling.aspx"
+  },
+  {
+    "council": "Derby City",
+    "city": "Derby City",
+    "country": "England",
+    "url": "https://secure.derby.gov.uk/binday/"
+  },
+  {
+    "council": "Derbyshire Dales District Council",
+    "city": "Derbyshire Dales",
+    "country": "England",
+    "url": "http://www.derbyshiredales.gov.uk/environment-and-waste/bins-recycling/when-is-my-collection"
+  },
+  {
+    "council": "Derry City and Strabane District Council",
+    "city": "Derry City and Strabane",
+    "country": "Northern Ireland",
+    "url": "https://www.derrystrabane.com/recycling"
+  },
+  {
+    "council": "Doncaster Metropolitan Borough Council",
+    "city": "Doncaster Metropolitan",
+    "country": "England",
+    "url": "http://www.doncaster.gov.uk/services/bins-recycling-waste"
+  },
+  {
+    "council": "Dorset Council",
+    "city": "Dorset",
+    "country": "England",
+    "url": "https://www.dorsetcouncil.gov.uk/bins-recycling-and-litter/bins-recycling-and-litter"
+  },
+  {
+    "council": "Dover District Council",
+    "city": "Dover",
+    "country": "England",
+    "url": "https://www.dover.gov.uk/waste-and-recycling"
+  },
+  {
+    "council": "Dudley Metropolitan Borough Council",
+    "city": "Dudley Metropolitan",
+    "country": "England",
+    "url": "http://www.dudley.gov.uk/resident/bins-recycling/"
+  },
+  {
+    "council": "Dumfries and Galloway Council",
+    "city": "Dumfries and Galloway",
+    "country": "Scotland",
+    "url": "https://www.dumgal.gov.uk/article/21418/Kerbside-Waste-and-Recycling-Service"
+  },
+  {
+    "council": "Dundee City Council",
+    "city": "Dundee",
+    "country": "Scotland",
+    "url": "https://my.dundeecity.gov.uk/en/service/Bin_Collection_Calendar"
+  },
+  {
+    "council": "Durham County Council",
+    "city": "Durham",
+    "country": "England",
+    "url": "http://www.durham.gov.uk/bincollections"
+  },
+  {
+    "council": "East Ayrshire Council",
+    "city": "East Ayrshire",
+    "country": "Scotland",
+    "url": "https://www.east-ayrshire.gov.uk/Housing/RubbishAndRecycling/Rubbishandrecycling.aspx"
+  },
+  {
+    "council": "East Cambridgeshire District Council",
+    "city": "East Cambridgeshire",
+    "country": "England",
+    "url": "https://eastcambs-self.achieveservice.com/bincollections"
+  },
+  {
+    "council": "East Devon District Council",
+    "city": "East Devon",
+    "country": "England",
+    "url": "http://eastdevon.gov.uk/recycling-and-rubbish/when-is-my-bin-collected/"
+  },
+  {
+    "council": "East Dunbartonshire Council",
+    "city": "East Dunbartonshire",
+    "country": "Scotland",
+    "url": "https://www.eastdunbarton.gov.uk/residents/recycling-waste/bins-and-recycling"
+  },
+  {
+    "council": "East Hampshire District Council",
+    "city": "East Hampshire",
+    "country": "England",
+    "url": "http://www.easthants.gov.uk/recycling-and-waste/bin-collections"
+  },
+  {
+    "council": "East Hertfordshire District Council",
+    "city": "East Hertfordshire",
+    "country": "England",
+    "url": "https://www.eastherts.gov.uk/bins-waste-recycling"
+  },
+  {
+    "council": "East Lindsey District Council",
+    "city": "East Lindsey",
+    "country": "England",
+    "url": "https://www.e-lindsey.gov.uk/mywastecollections"
+  },
+  {
+    "council": "East Lothian Council",
+    "city": "East Lothian",
+    "country": "Scotland",
+    "url": "http://collectiondates.eastlothian.gov.uk/home.asp"
+  },
+  {
+    "council": "East Renfrewshire Council",
+    "city": "East Renfrewshire",
+    "country": "Scotland",
+    "url": "http://www.eastrenfrewshire.gov.uk/article/1555/When-is-my-bin-emptied"
+  },
+  {
+    "council": "East Riding of Yorkshire Council",
+    "city": "East Riding of Yorkshire",
+    "country": "England",
+    "url": "https://www.eastriding.gov.uk/environment/bins-rubbish-recycling/bins-and-collections/bin-collection-dates/"
+  },
+  {
+    "council": "East Staffordshire Borough Council",
+    "city": "East Staffordshire",
+    "country": "England",
+    "url": "http://www.eaststaffsbc.gov.uk/bins-rubbish-recycling/collection-dates"
+  },
+  {
+    "council": "East Suffolk District Council",
+    "city": "East Suffolk",
+    "country": "England",
+    "url": "https://my.eastsuffolk.gov.uk/service/Bin_collection_dates_finder"
+  },
+  {
+    "council": "Eastbourne Borough Council",
+    "city": "Eastbourne",
+    "country": "England",
+    "url": "https://www.lewes-eastbourne.gov.uk/article/1158/When-is-my-bin-collection-day"
+  },
+  {
+    "council": "Eastleigh Borough Council",
+    "city": "Eastleigh",
+    "country": "England",
+    "url": "https://www.eastleigh.gov.uk/waste-bins-and-recycling"
+  },
+  {
+    "council": "Elmbridge Borough Council",
+    "city": "Elmbridge",
+    "country": "England",
+    "url": "https://www.elmbridge.gov.uk/waste-and-recycling/missed-bins/"
+  },
+  {
+    "council": "Epping Forest District Council",
+    "city": "Epping Forest",
+    "country": "England",
+    "url": "https://www.eppingforestdc.gov.uk/recycling-and-rubbish/"
+  },
+  {
+    "council": "Epsom and Ewell Borough Council",
+    "city": "Epsom and Ewell",
+    "country": "England",
+    "url": "https://www.epsom-ewell.gov.uk/residents/recycling-and-waste"
+  },
+  {
+    "council": "Erewash Borough Council",
+    "city": "Erewash",
+    "country": "England",
+    "url": "https://map.erewash.gov.uk/isharelive.web/myerewash.aspx"
+  },
+  {
+    "council": "Exeter City Council",
+    "city": "Exeter",
+    "country": "England",
+    "url": "http://www.exeter.gov.uk/index.aspx?articleid=10184"
+  },
+  {
+    "council": "Falkirk Council",
+    "city": "Falkirk",
+    "country": "Scotland",
+    "url": "http://www.falkirk.gov.uk/services/bins-rubbish-recycling/household-waste/bin-collection-dates.aspx"
+  },
+  {
+    "council": "Fareham Borough Council",
+    "city": "Fareham",
+    "country": "England",
+    "url": "https://www.fareham.gov.uk/waste_collection_and_recycling/bincalendar.aspx"
+  },
+  {
+    "council": "Fenland District Council",
+    "city": "Fenland",
+    "country": "England",
+    "url": "http://www.fenland.gov.uk/findyournearest"
+  },
+  {
+    "council": "Fermanagh and Omagh District Council",
+    "city": "Fermanagh and Omagh",
+    "country": "Northern Ireland",
+    "url": "http://www.fermanaghomagh.com/residential-services/environment-and-waste/waste-collection-calendar/"
+  },
+  {
+    "council": "Fife Council",
+    "city": "Fife",
+    "country": "Scotland",
+    "url": "https://www.fife.gov.uk/kb/docs/articles/bins-and-recycling/household-recycling"
+  },
+  {
+    "council": "Flintshire County Council",
+    "city": "Flintshire",
+    "country": "Wales",
+    "url": "http://www.flintshire.gov.uk/en/Resident/Bins-Recycling-and-Waste/Check-your-bin-day.aspx"
+  },
+  {
+    "council": "Folkestone and Hythe District Council",
+    "city": "Folkestone and Hythe",
+    "country": "England",
+    "url": "http://www.folkestone-hythe.gov.uk/recycling-waste-and-bins"
+  },
+  {
+    "council": "Forest of Dean District Council",
+    "city": "Forest of Dean",
+    "country": "England",
+    "url": "https://www.fdean.gov.uk/residents/bins-recycling/"
+  },
+  {
+    "council": "Gateshead Metropolitan Borough Council",
+    "city": "Gateshead Metropolitan",
+    "country": "England",
+    "url": "https://www.gateshead.gov.uk/article/1785/Bins-and-recycling"
+  },
+  {
+    "council": "Gedling Borough Council",
+    "city": "Gedling",
+    "country": "England",
+    "url": "https://www.gedling.gov.uk/rubbish/"
+  },
+  {
+    "council": "Glasgow City Council",
+    "city": "Glasgow",
+    "country": "Scotland",
+    "url": "https://www.glasgow.gov.uk/index.aspx?articleid=16567"
+  },
+  {
+    "council": "Gloucester City Council",
+    "city": "Gloucester",
+    "country": "England",
+    "url": "https://www.gloucester.gov.uk/environment-waste-recycling/waste-recycling-street-cleaning/bins-recycling/"
+  },
+  {
+    "council": "Gosport Borough Council",
+    "city": "Gosport",
+    "country": "England",
+    "url": "https://www.gosport.gov.uk/refusecollections"
+  },
+  {
+    "council": "Gravesham Borough Council",
+    "city": "Gravesham",
+    "country": "England",
+    "url": "https://www.gravesham.gov.uk/bins-recycling"
+  },
+  {
+    "council": "Great Yarmouth Borough Council",
+    "city": "Great Yarmouth",
+    "country": "England",
+    "url": "http://www.great-yarmouth.gov.uk/rubbish-and-recycling"
+  },
+  {
+    "council": "Guildford Borough Council",
+    "city": "Guildford",
+    "country": "England",
+    "url": "http://www.guildford.gov.uk/yourguildford"
+  },
+  {
+    "council": "Gwynedd Council",
+    "city": "Gwynedd",
+    "country": "Wales",
+    "url": "https://www.gwynedd.llyw.cymru/en/Residents/Bins-and-recycling/When-is-my-waste-collected.aspx"
+  },
+  {
+    "council": "Halton Borough Council",
+    "city": "Halton",
+    "country": "England",
+    "url": "https://webapp.halton.gov.uk/PublicWebForms/WasteServiceSearch.aspx"
+  },
+  {
+    "council": "Harborough District Council",
+    "city": "Harborough",
+    "country": "England",
+    "url": "http://www.harborough.gov.uk/collections"
+  },
+  {
+    "council": "Harlow Council",
+    "city": "Harlow",
+    "country": "England",
+    "url": "https://selfserve.harlow.gov.uk/"
+  },
+  {
+    "council": "Hart District Council",
+    "city": "Hart",
+    "country": "England",
+    "url": "https://www.hart.gov.uk/your-area"
+  },
+  {
+    "council": "Hartlepool Borough Council",
+    "city": "Hartlepool",
+    "country": "England",
+    "url": "https://www.hartlepool.gov.uk/bincalendars"
+  },
+  {
+    "council": "Hastings Borough Council",
+    "city": "Hastings",
+    "country": "England",
+    "url": "https://www.hastings.gov.uk/environment_planning/cleaner_hastings/waste_recycle/"
+  },
+  {
+    "council": "Havant Borough Council",
+    "city": "Havant",
+    "country": "England",
+    "url": "http://www.havant.gov.uk/rubbish-and-recycling"
+  },
+  {
+    "council": "Herefordshire Council",
+    "city": "Herefordshire",
+    "country": "England",
+    "url": "https://www.herefordshire.gov.uk/rubbish-recycling"
+  },
+  {
+    "council": "Hertsmere Borough Council",
+    "city": "Hertsmere",
+    "country": "England",
+    "url": "https://www.hertsmere.gov.uk/Environment-Refuse--Recycling/Recycling--Waste/Recycling-and-Waste.aspx"
+  },
+  {
+    "council": "High Peak Borough Council",
+    "city": "High Peak",
+    "country": "England",
+    "url": "http://www.highpeak.gov.uk/hp/bins"
+  },
+  {
+    "council": "Hinckley and Bosworth Borough Council",
+    "city": "Hinckley and Bosworth",
+    "country": "England",
+    "url": "https://www.hinckley-bosworth.gov.uk/collections"
+  },
+  {
+    "council": "Horsham District Council",
+    "city": "Horsham",
+    "country": "England",
+    "url": "https://satellite.horsham.gov.uk/environment/refuse/refuse_cal1.asp"
+  },
+  {
+    "council": "Hull City Council",
+    "city": "Hull",
+    "country": "England",
+    "url": "https://www.hull.gov.uk/household-collections "
+  },
+  {
+    "council": "Huntingdonshire District Council",
+    "city": "Huntingdonshire",
+    "country": "England",
+    "url": "http://applications.huntingdonshire.gov.uk/applications/RefuseCalendarMVC"
+  },
+  {
+    "council": "Hyndburn Borough Council",
+    "city": "Hyndburn",
+    "country": "England",
+    "url": "http://ww2.hyndburnbc.gov.uk/ListAccounts.aspx"
+  },
+  {
+    "council": "Inverclyde Council",
+    "city": "Inverclyde",
+    "country": "Scotland",
+    "url": "https://www.inverclyde.gov.uk/environment/recycling-and-waste-services/when-are-my-bins-collected"
+  },
+  {
+    "council": "Isle of Anglesey County Council",
+    "city": "Isle of Anglesey",
+    "country": "Wales",
+    "url": "https://www.anglesey.gov.uk/en/Residents/Bins-and-recycling/Household-waste-collection-on-Anglesey.aspx"
+  },
+  {
+    "council": "Isle of Wight Council",
+    "city": "Isle of Wight",
+    "country": "England",
+    "url": "https://www.iow.gov.uk/recyclingandwaste"
+  },
+  {
+    "council": "Kirklees Council",
+    "city": "Kirklees",
+    "country": "England",
+    "url": "http://www.kirklees.gov.uk/beta/your-property-bins-and-recycling.aspx"
+  },
+  {
+    "council": "Knowsley Metropolitan Borough Council",
+    "city": "Knowsley Metropolitan",
+    "country": "England",
+    "url": "http://www.knowsley.gov.uk/residents/housing.aspx"
+  },
+  {
+    "council": "Lancaster City Council",
+    "city": "Lancaster",
+    "country": "England",
+    "url": "http://www.lancaster.gov.uk/bins-recycling/bin-collection-calendar"
+  },
+  {
+    "council": "Leeds City Council",
+    "city": "Leeds",
+    "country": "England",
+    "url": "http://www.leeds.gov.uk/residents/Pages/Check-your-bin-day.aspx"
+  },
+  {
+    "council": "Leicester City Council",
+    "city": "Leicester",
+    "country": "England",
+    "url": "http://www.leicester.gov.uk/your-environment/recycling-and-waste/household-waste-collections"
+  },
+  {
+    "council": "Lewes District Council",
+    "city": "Lewes",
+    "country": "England",
+    "url": "https://www.lewes-eastbourne.gov.uk/article/1163/Household-waste-collection-service"
+  },
+  {
+    "council": "Lichfield District Council",
+    "city": "Lichfield",
+    "country": "England",
+    "url": "https://www.lichfielddc.gov.uk/Residents/Environment/Recycling-bins-and-waste/Recycling-bins-and-waste.aspx"
+  },
+  {
+    "council": "Lisburn and Castlereagh City Council",
+    "city": "Lisburn and Castlereagh",
+    "country": "Northern Ireland",
+    "url": "https://www.lisburncastlereagh.gov.uk/resident/bins-recycling/when-is-my-bin-collection-day"
+  },
+  {
+    "council": "Liverpool City Council",
+    "city": "Liverpool",
+    "country": "England",
+    "url": "http://liverpool.gov.uk/bins-and-recycling/bin-collection-dates/"
+  },
+  {
+    "council": "London Borough of Barking and Dagenham",
+    "city": "London Borough of Barking and Dagenham",
+    "country": "England",
+    "url": "https://www.lbbd.gov.uk/bin-collection-days"
+  },
+  {
+    "council": "London Borough of Barnet",
+    "city": "London Borough of Barnet",
+    "country": "England",
+    "url": "http://www.barnet.gov.uk/household-waste"
+  },
+  {
+    "council": "London Borough of Bexley",
+    "city": "London Borough of Bexley",
+    "country": "England",
+    "url": "https://www.bexley.gov.uk/services/rubbish-and-recycling"
+  },
+  {
+    "council": "London Borough of Brent",
+    "city": "London Borough of Brent",
+    "country": "England",
+    "url": "https://www.brent.gov.uk/recycling"
+  },
+  {
+    "council": "London Borough of Bromley",
+    "city": "London Borough of Bromley",
+    "country": "England",
+    "url": "http://www.bromley.gov.uk/downloads/download/34/waste_collection_service_calendars"
+  },
+  {
+    "council": "London Borough of Camden",
+    "city": "London Borough of Camden",
+    "country": "England",
+    "url": "https://www.camden.gov.uk/check-collection-day"
+  },
+  {
+    "council": "London Borough of Croydon",
+    "city": "London Borough of Croydon",
+    "country": "England",
+    "url": "http://www.croydon.gov.uk/environment/rrandw/"
+  },
+  {
+    "council": "London Borough of Ealing",
+    "city": "London Borough of Ealing",
+    "country": "England",
+    "url": "https://www.ealing.gov.uk/info/201167/rubbish_and_recycling/2015/find_your_rubbish_and_recycling_collection_day"
+  },
+  {
+    "council": "London Borough of Enfield",
+    "city": "London Borough of Enfield",
+    "country": "England",
+    "url": "https://new.enfield.gov.uk/services/rubbish-and-recycling/household-collections/rubbish-and-recycling-collections/"
+  },
+  {
+    "council": "London Borough of Hackney",
+    "city": "London Borough of Hackney",
+    "country": "England",
+    "url": "https://hackney.gov.uk/rubbish"
+  },
+  {
+    "council": "London Borough of Hammersmith & Fulham",
+    "city": "London Borough of Hammersmith & Fulham",
+    "country": "England",
+    "url": "https://www.lbhf.gov.uk/recycling-and-rubbish/rubbish-non-recyclables"
+  },
+  {
+    "council": "London Borough of Haringey",
+    "city": "London Borough of Haringey",
+    "country": "England",
+    "url": "https://www.haringey.gov.uk/environment-and-waste/refuse-and-recycling/bin-collections/collection-days"
+  },
+  {
+    "council": "London Borough of Harrow",
+    "city": "London Borough of Harrow",
+    "country": "England",
+    "url": "https://www.harrow.gov.uk/bins"
+  },
+  {
+    "council": "London Borough of Havering",
+    "city": "London Borough of Havering",
+    "country": "England",
+    "url": "https://www.havering.gov.uk/info/20003/rubbish_and_recycling"
+  },
+  {
+    "council": "London Borough of Hillingdon",
+    "city": "London Borough of Hillingdon",
+    "country": "England",
+    "url": "https://www.hillingdon.gov.uk/rubbishandrecycling"
+  },
+  {
+    "council": "London Borough of Hounslow",
+    "city": "London Borough of Hounslow",
+    "country": "England",
+    "url": "https://www.hounslow.gov.uk/collections"
+  },
+  {
+    "council": "London Borough of Islington",
+    "city": "London Borough of Islington",
+    "country": "England",
+    "url": "https://www.islington.gov.uk/recycling-and-rubbish/recycling-and-rubbish-collections/recycling-and-rubbish-collection-times"
+  },
+  {
+    "council": "London Borough of Lambeth",
+    "city": "London Borough of Lambeth",
+    "country": "England",
+    "url": "https://www.lambeth.gov.uk/rubbish-recycling"
+  },
+  {
+    "council": "London Borough of Lewisham",
+    "city": "London Borough of Lewisham",
+    "country": "England",
+    "url": "http://www.lewisham.gov.uk/myservices/wasterecycle/your-bins/collection/Pages/default.aspx"
+  },
+  {
+    "council": "London Borough of Merton",
+    "city": "London Borough of Merton",
+    "country": "England",
+    "url": "http://www.merton.gov.uk/refusecollection"
+  },
+  {
+    "council": "London Borough of Newham",
+    "city": "London Borough of Newham",
+    "country": "England",
+    "url": "https://www.newham.gov.uk/Pages/Services/Recycling-household-collections.aspx"
+  },
+  {
+    "council": "London Borough of Redbridge",
+    "city": "London Borough of Redbridge",
+    "country": "England",
+    "url": "https://www.redbridge.gov.uk/bins-waste-and-recycling/"
+  },
+  {
+    "council": "London Borough of Richmond upon Thames",
+    "city": "London Borough of Richmond upon Thames",
+    "country": "England",
+    "url": "https://www.richmond.gov.uk/waste_and_recycling"
+  },
+  {
+    "council": "London Borough of Southwark",
+    "city": "London Borough of Southwark",
+    "country": "England",
+    "url": "http://www.southwark.gov.uk/bins/lookup"
+  },
+  {
+    "council": "London Borough of Sutton",
+    "city": "London Borough of Sutton",
+    "country": "England",
+    "url": "https://www.sutton.gov.uk/info/200449/waste_and_recycling/1578/when_are_my_bins_collected"
+  },
+  {
+    "council": "London Borough of Tower Hamlets",
+    "city": "London Borough of Tower Hamlets",
+    "country": "England",
+    "url": "http://www.towerhamlets.gov.uk/lgnl/environment_and_planning/recycling_and_waste/recycling_and_waste.aspx"
+  },
+  {
+    "council": "London Borough of Waltham Forest",
+    "city": "London Borough of Waltham Forest",
+    "country": "England",
+    "url": "https://www.walthamforest.gov.uk/rubbish-and-recycling/household-bin-collections/check-your-collection-days"
+  },
+  {
+    "council": "London Borough of Wandsworth",
+    "city": "London Borough of Wandsworth",
+    "country": "England",
+    "url": "http://www.wandsworth.gov.uk/info/200489/rubbish_and_recycling"
+  },
+  {
+    "council": "Luton Borough Council",
+    "city": "Luton",
+    "country": "England",
+    "url": "https://www.luton.gov.uk/bins-waste-recycling/bin-collections"
+  },
+  {
+    "council": "Maidstone Borough Council",
+    "city": "Maidstone",
+    "country": "England",
+    "url": "https://maidstone.gov.uk/home/primary-services/bins-and-recycling"
+  },
+  {
+    "council": "Maldon District Council",
+    "city": "Maldon",
+    "country": "England",
+    "url": "http://www.maldon.gov.uk/info/200084/recycling_rubbish_and_waste"
+  },
+  {
+    "council": "Malvern Hills District Council",
+    "city": "Malvern Hills",
+    "country": "England",
+    "url": "http://swict.malvernhills.gov.uk/mhdcroundlookup/"
+  },
+  {
+    "council": "Manchester City Council",
+    "city": "Manchester",
+    "country": "England",
+    "url": "http://www.manchester.gov.uk/bincollections"
+  },
+  {
+    "council": "Mansfield District Council",
+    "city": "Mansfield",
+    "country": "England",
+    "url": "https://www.mansfield.gov.uk/bins-recycling"
+  },
+  {
+    "council": "Medway Council",
+    "city": "Medway",
+    "country": "England",
+    "url": "https://www.medway.gov.uk/info/200132/waste_and_recycling"
+  },
+  {
+    "council": "Melton Borough Council",
+    "city": "Melton",
+    "country": "England",
+    "url": "http://www.melton.gov.uk/info/524/bin_collection_dates_and_times"
+  },
+  {
+    "council": "Mid Devon District Council",
+    "city": "Mid Devon",
+    "country": "England",
+    "url": "https://www.middevon.gov.uk/residents/recycling-rubbish/check-collection-dates/"
+  },
+  {
+    "council": "Mid Suffolk District Council",
+    "city": "Mid Suffolk",
+    "country": "England",
+    "url": "http://www.midsuffolk.gov.uk/waste-services/collection-days/"
+  },
+  {
+    "council": "Mid Sussex District Council",
+    "city": "Mid Sussex",
+    "country": "England",
+    "url": "https://www.midsussex.gov.uk/waste-recycling/household-rubbish/"
+  },
+  {
+    "council": "Mid Ulster District Council",
+    "city": "Mid Ulster",
+    "country": "Northern Ireland",
+    "url": "http://www.midulstercouncil.org/Services/Bins-Recycling"
+  },
+  {
+    "council": "Mid and East Antrim Borough Council",
+    "city": "Mid and East Antrim",
+    "country": "Northern Ireland",
+    "url": "https://www.midandeastantrim.gov.uk/resident/waste-recycling/collection-dates"
+  },
+  {
+    "council": "Middlesbrough Borough Council",
+    "city": "Middlesbrough",
+    "country": "England",
+    "url": "https://www.middlesbrough.gov.uk/recycling-and-rubbish/"
+  },
+  {
+    "council": "Midlothian Council",
+    "city": "Midlothian",
+    "country": "Scotland",
+    "url": "https://www.midlothian.gov.uk/info/1054/bins_and_recycling/343/bin_collections"
+  },
+  {
+    "council": "Milton Keynes City Council",
+    "city": "Milton Keynes",
+    "country": "England",
+    "url": "https://www.milton-keynes.gov.uk/waste-recycling/collection-days"
+  },
+  {
+    "council": "Mole Valley District Council",
+    "city": "Mole Valley",
+    "country": "England",
+    "url": "https://www.molevalley.gov.uk/home/bins-recycling"
+  },
+  {
+    "council": "Monmouthshire County Council",
+    "city": "Monmouthshire",
+    "country": "Wales",
+    "url": "http://www.monmouthshire.gov.uk/home/streets-parking-and-transport/recycling-and-waste/"
+  },
+  {
+    "council": "Neath Port Talbot County Borough Council",
+    "city": "Neath Port Talbot County",
+    "country": "Wales",
+    "url": "http://www.npt.gov.uk/default.aspx?page=7263"
+  },
+  {
+    "council": "New Forest District Council",
+    "city": "New Forest",
+    "country": "England",
+    "url": "https://www.newforest.gov.uk/rubbish"
+  },
+  {
+    "council": "Newark and Sherwood District Council",
+    "city": "Newark and Sherwood",
+    "country": "England",
+    "url": "https://app.newark-sherwooddc.gov.uk/bincollection/"
+  },
+  {
+    "council": "Newcastle City Council",
+    "city": "Newcastle",
+    "country": "England",
+    "url": "https://community2.newcastle.gov.uk/my-neighbourhood/"
+  },
+  {
+    "council": "Newcastle-under-Lyme District Council",
+    "city": "Newcastle-under-Lyme",
+    "country": "England",
+    "url": "http://www.newcastle-staffs.gov.uk/all-services/recycling-and-waste/collection-date-finder"
+  },
+  {
+    "council": "Newport City Council",
+    "city": "Newport",
+    "country": "Wales",
+    "url": "http://www.newport.gov.uk/en/Waste-Recycling/Bin-collection-days.aspx"
+  },
+  {
+    "council": "Newry, Mourne and Down District Council",
+    "city": "Newry, Mourne and Down",
+    "country": "Northern Ireland",
+    "url": "http://www.newrymournedown.org/bin-collection-information-and-calendar"
+  },
+  {
+    "council": "North Ayrshire Council",
+    "city": "North Ayrshire",
+    "country": "Scotland",
+    "url": "https://www.north-ayrshire.gov.uk/bins-litter-and-recycling/bins/bin-collection-day.aspx"
+  },
+  {
+    "council": "North Devon Council",
+    "city": "North Devon",
+    "country": "England",
+    "url": "http://www.northdevon.gov.uk/bins-and-recycling/collection-dates/"
+  },
+  {
+    "council": "North East Derbyshire District Council",
+    "city": "North East Derbyshire",
+    "country": "England",
+    "url": "https://www.ne-derbyshire.gov.uk/bins-and-recycling/bin-collection-dates"
+  },
+  {
+    "council": "North East Lincolnshire Council",
+    "city": "North East Lincolnshire",
+    "country": "England",
+    "url": "https://www.nelincs.gov.uk/refuse-collection-schedule/"
+  },
+  {
+    "council": "North Hertfordshire District Council",
+    "city": "North Hertfordshire",
+    "country": "England",
+    "url": "https://www.north-herts.gov.uk/home/waste-and-recycling"
+  },
+  {
+    "council": "North Kesteven District Council",
+    "city": "North Kesteven",
+    "country": "England",
+    "url": "https://www.n-kesteven.gov.uk/residents/waste-recycling-and-environment/find-information-about-the-waste-service/find-your-bin-collection-days/"
+  },
+  {
+    "council": "North Lanarkshire Council",
+    "city": "North Lanarkshire",
+    "country": "Scotland",
+    "url": "http://www.northlanarkshire.gov.uk/index.aspx?articleid=7451"
+  },
+  {
+    "council": "North Lincolnshire Council",
+    "city": "North Lincolnshire",
+    "country": "England",
+    "url": "https://www.northlincs.gov.uk/bins-waste-and-recycling/collection-dates/"
+  },
+  {
+    "council": "North Norfolk District Council",
+    "city": "North Norfolk",
+    "country": "England",
+    "url": "http://www.northnorfolk.org/bincollection/"
+  },
+  {
+    "council": "North Northamptonshire Council",
+    "city": "North Northamptonshire",
+    "country": "England",
+    "url": "https://www.northnorthants.gov.uk/bins-recycling-and-street-cleaning/bin-collection-day"
+  },
+  {
+    "council": "North Somerset Council",
+    "city": "North Somerset",
+    "country": "England",
+    "url": "http://www.n-somerset.gov.uk/my-services/waste/rubbish-collections/collection-days-from-june-2018/"
+  },
+  {
+    "council": "North Tyneside Council",
+    "city": "North Tyneside",
+    "country": "England",
+    "url": "https://my.northtyneside.gov.uk/category/80/rubbish-and-recycling"
+  },
+  {
+    "council": "North Warwickshire Borough Council",
+    "city": "North Warwickshire",
+    "country": "England",
+    "url": "https://www.northwarks.gov.uk/info/20004/waste_and_recycling"
+  },
+  {
+    "council": "North West Leicestershire District Council",
+    "city": "North West Leicestershire",
+    "country": "England",
+    "url": "http://www.nwleics.gov.uk/countyservice_details/home.asp?PID=524"
+  },
+  {
+    "council": "North Yorkshire Council",
+    "city": "North Yorkshire",
+    "country": "England",
+    "url": "https://www.northyorks.gov.uk/bins-recycling-and-waste/check-your-bin-collection-day"
+  },
+  {
+    "council": "Northumberland County Council",
+    "city": "Northumberland",
+    "country": "England",
+    "url": "https://www.northumberland.gov.uk/bins-recycling-waste/bin-collections-residents"
+  },
+  {
+    "council": "Norwich City Council",
+    "city": "Norwich",
+    "country": "England",
+    "url": "http://www.norwich.gov.uk/WasteAndRecycling/Pages/HowOurServiceWorks.aspx"
+  },
+  {
+    "council": "Nottingham City Council",
+    "city": "Nottingham",
+    "country": "England",
+    "url": "http://www.nottinghamcity.gov.uk/bin-and-rubbish-collections/check-my-bin-collection-day/"
+  },
+  {
+    "council": "Nuneaton and Bedworth Borough Council",
+    "city": "Nuneaton and Bedworth",
+    "country": "England",
+    "url": "https://www.nuneatonandbedworth.gov.uk/info/20001/rubbish_and_recycling"
+  },
+  {
+    "council": "Oadby and Wigston Borough Council",
+    "city": "Oadby and Wigston",
+    "country": "England",
+    "url": "https://www.oadby-wigston.gov.uk/pages/household_waste_collection"
+  },
+  {
+    "council": "Oldham Metropolitan Borough Council",
+    "city": "Oldham Metropolitan",
+    "country": "England",
+    "url": "https://adt.oldham.gov.uk/Forms/bincollectiondates/details"
+  },
+  {
+    "council": "Orkney Islands Council",
+    "city": "Orkney Islands",
+    "country": "Scotland",
+    "url": "http://www.orkney.gov.uk/Service-Directory/R/rubbish-and-recycling.htm"
+  },
+  {
+    "council": "Oxford City Council",
+    "city": "Oxford",
+    "country": "England",
+    "url": "https://www.oxford.gov.uk/mybinday"
+  },
+  {
+    "council": "Pembrokeshire County Council",
+    "city": "Pembrokeshire",
+    "country": "Wales",
+    "url": "https://www.pembrokeshire.gov.uk/waste-and-recycling"
+  },
+  {
+    "council": "Pendle Borough Council",
+    "city": "Pendle",
+    "country": "England",
+    "url": "https://www.pendle.gov.uk/info/20001/bins_and_recycling"
+  },
+  {
+    "council": "Perth and Kinross Council",
+    "city": "Perth and Kinross",
+    "country": "Scotland",
+    "url": "http://www.pkc.gov.uk/bindates"
+  },
+  {
+    "council": "Peterborough City Council",
+    "city": "Peterborough",
+    "country": "England",
+    "url": "https://www.peterborough.gov.uk/residents/rubbish-and-recycling/bins/"
+  },
+  {
+    "council": "Plymouth City Council",
+    "city": "Plymouth",
+    "country": "England",
+    "url": "https://www.plymouth.gov.uk/bins-recycling-and-waste"
+  },
+  {
+    "council": "Portsmouth City Council",
+    "city": "Portsmouth",
+    "country": "England",
+      "url": "https://my.portsmouth.gov.uk/en/AchieveForms/?form_uri=sandbox-publish://AF-Process-26e27e70-f771-47b1-a34d-af276075cede/AF-Stage-cd7cc291-2e59-42cc-8c3f-1f93e132a2c9/definition.json&redirectlink=%2Fen&cancelRedirectLink=%2Fen"
+    },
+  {
+    "council": "Powys County Council",
+    "city": "Powys",
+    "country": "Wales",
+    "url": "http://www.powys.gov.uk/en/bins-rubbish-recycling/report-a-bin-collection-problem/"
+  },
+  {
+    "council": "Preston City Council",
+    "city": "Preston",
+    "country": "England",
+    "url": "https://www.preston.gov.uk/bins"
+  },
+  {
+    "council": "Reading Borough Council",
+    "city": "Reading",
+    "country": "England",
+    "url": "https://www.reading.gov.uk/bin-calendar/"
+  },
+  {
+    "council": "Redcar and Cleveland Borough Council",
+    "city": "Redcar and Cleveland",
+    "country": "England",
+    "url": "https://www.redcar-cleveland.gov.uk/resident/bins-waste-and-recycling/Pages/bins-waste-and-recycling.aspx"
+  },
+  {
+    "council": "Redditch Borough Council",
+    "city": "Redditch",
+    "country": "England",
+    "url": "http://www.redditchbc.gov.uk/my-place/bins-and-recycling/what-is-my-bin-collection-day.aspx"
+  },
+  {
+    "council": "Reigate and Banstead Borough Council",
+    "city": "Reigate and Banstead",
+    "country": "England",
+    "url": "http://www.reigate-banstead.gov.uk/environment/recycling_rubbish_and_waste/proposals/index.asp"
+  },
+  {
+    "council": "Renfrewshire Council",
+    "city": "Renfrewshire",
+    "country": "Scotland",
+    "url": "http://www.renfrewshire.gov.uk/checkyourbincollectionday"
+  },
+  {
+    "council": "Rhondda Cynon Taf County Borough Council",
+    "city": "Rhondda Cynon Taf County",
+    "country": "Wales",
+    "url": "http://www.rctcbc.gov.uk/EN/Resident/BinsandRecycling/BinCollectionDays.aspx"
+  },
+  {
+    "council": "Ribble Valley Borough Council",
+    "city": "Ribble Valley",
+    "country": "England",
+    "url": "https://www.ribblevalley.gov.uk/directory/15/find_your_bin_collection_day/search"
+  },
+  {
+    "council": "Rochdale Metropolitan Borough Council",
+    "city": "Rochdale Metropolitan",
+    "country": "England",
+    "url": "https://www.rochdale.gov.uk/bins"
+  },
+  {
+    "council": "Rochford District Council",
+    "city": "Rochford",
+    "country": "England",
+    "url": "https://www.rochford.gov.uk/environment/recycling/bins-and-collections"
+  },
+  {
+    "council": "Rossendale Borough Council",
+    "city": "Rossendale",
+    "country": "England",
+    "url": "https://www.rossendale.gov.uk/info/210192/find_your_bin_collection_day"
+  },
+  {
+    "council": "Rother District Council",
+    "city": "Rother",
+    "country": "England",
+    "url": "http://www.rother.gov.uk/whenismybinday"
+  },
+  {
+    "council": "Rotherham Metropolitan Borough Council",
+    "city": "Rotherham Metropolitan",
+    "country": "England",
+    "url": "https://www.rotherham.gov.uk/rubbish-recycling/bin-collections"
+  },
+  {
+    "council": "Royal Borough of Greenwich",
+    "city": "Royal Borough of Greenwich",
+    "country": "England",
+    "url": "https://www.royalgreenwich.gov.uk/info/200171/recycling_and_rubbish/100/bin_collection_days"
+  },
+  {
+    "council": "Royal Borough of Kensington and Chelsea",
+    "city": "Royal Borough of Kensington and Chelsea",
+    "country": "England",
+    "url": "https://www.rbkc.gov.uk/bins-and-recycling"
+  },
+  {
+    "council": "Royal Borough of Kingston upon Thames",
+    "city": "Royal Borough of Kingston upon Thames",
+    "country": "England",
+    "url": "http://www.kingston.gov.uk/bin_collection"
+  },
+  {
+    "council": "Royal Borough of Windsor and Maidenhead",
+    "city": "Royal Borough of Windsor and Maidenhead",
+    "country": "England",
+    "url": "https://www.rbwm.gov.uk/environment-and-waste/recycling-and-rubbish"
+  },
+  {
+    "council": "Rugby Borough Council",
+    "city": "Rugby",
+    "country": "England",
+    "url": "https://www.rugby.gov.uk/binday"
+  },
+  {
+    "council": "Runnymede Borough Council",
+    "city": "Runnymede",
+    "country": "England",
+    "url": "https://www.runnymede.gov.uk/article/15324/Check-your-bin-day"
+  },
+  {
+    "council": "Rushcliffe Borough Council",
+    "city": "Rushcliffe",
+    "country": "England",
+    "url": "https://eserv.rushcliffe.gov.uk/onlineservices/binrounds/"
+  },
+  {
+    "council": "Rushmoor Borough Council",
+    "city": "Rushmoor",
+    "country": "England",
+    "url": "http://www.rushmoor.gov.uk/article/2061/Information-about-your-bins-and-collections"
+  },
+  {
+    "council": "Rutland County Council",
+    "city": "Rutland",
+    "country": "England",
+    "url": "https://www.rutland.gov.uk/my-services/waste-and-recycling/"
+  },
+  {
+    "council": "Salford City Council",
+    "city": "Salford",
+    "country": "England",
+    "url": "https://www.salford.gov.uk/bins"
+  },
+  {
+    "council": "Sandwell Metropolitan Borough Council",
+    "city": "Sandwell Metropolitan",
+    "country": "England",
+    "url": "http://www.sandwell.gov.uk/info/200160/bins_and_recycling"
+  },
+  {
+    "council": "Scottish Borders Council",
+    "city": "Scottish Borders",
+    "country": "Scotland",
+    "url": "https://www.scotborders.gov.uk/info/20001/bins_rubbish_and_recycling/182/bin_collection_days"
+  },
+  {
+    "council": "Sefton Metropolitan Borough Council",
+    "city": "Sefton Metropolitan",
+    "country": "England",
+    "url": "http://www.sefton.gov.uk/1821"
+  },
+  {
+    "council": "Sevenoaks District Council",
+    "city": "Sevenoaks",
+    "country": "England",
+    "url": "https://selfservice.sevenoaks.gov.uk/do-it-online/ufsmain?formid=REFUSE_COLLECTIONS&ebz=1_1505134748062&ebd=0&ebz=1_1505134748062"
+  },
+  {
+    "council": "Sheffield City Council",
+    "city": "Sheffield",
+    "country": "England",
+    "url": "https://www.veolia.co.uk/sheffield/collections/collection-day-finder"
+  },
+  {
+    "council": "Shetland Islands Council",
+    "city": "Shetland Islands",
+    "country": "Scotland",
+    "url": "http://www.shetland.gov.uk/rubbish-recycling/rubbish-collection.asp"
+  },
+  {
+    "council": "Shropshire Council",
+    "city": "Shropshire",
+    "country": "England",
+    "url": "https://www.shropshire.gov.uk/recycling-and-rubbish/what-to-do-with/your-collection-service/"
+  },
+  {
+    "council": "Slough Borough Council",
+    "city": "Slough",
+    "country": "England",
+    "url": "https://www.slough.gov.uk/bins-waste-recycling/what-goes-in-bins"
+  },
+  {
+    "council": "Solihull Metropolitan Borough Council",
+    "city": "Solihull Metropolitan",
+    "country": "England",
+    "url": "https://www.solihull.gov.uk/Rubbish-and-recycling/Recycling-collections"
+  },
+  {
+    "council": "South Ayrshire Council",
+    "city": "South Ayrshire",
+    "country": "Scotland",
+    "url": "http://www.south-ayrshire.gov.uk/bin-day/"
+  },
+  {
+    "council": "South Cambridgeshire District Council",
+    "city": "South Cambridgeshire",
+    "country": "England",
+    "url": "https://www.scambs.gov.uk/bins/"
+  },
+  {
+    "council": "South Derbyshire District Council",
+    "city": "South Derbyshire",
+    "country": "England",
+    "url": "https://www.southderbyshire.gov.uk/our-services/recycling-bins-and-waste/bin-collection-dates"
+  },
+  {
+    "council": "South Gloucestershire Council",
+    "city": "South Gloucestershire",
+    "country": "England",
+    "url": "https://beta.southglos.gov.uk/waste-and-recycling-collection-dates/"
+  },
+  {
+    "council": "South Hams District Council",
+    "city": "South Hams",
+    "country": "England",
+    "url": "https://www.southhams.gov.uk/recyclingwaste"
+  },
+  {
+    "council": "South Holland District Council",
+    "city": "South Holland",
+    "country": "England",
+    "url": "https://forms.sholland.gov.uk/tkflow/Flow.aspx?f=SHDC_MyCollections.kdt&template=SHDCTemplate_Web"
+  },
+  {
+    "council": "South Kesteven District Council",
+    "city": "South Kesteven",
+    "country": "England",
+    "url": "https://www.southkesteven.gov.uk/binday"
+  },
+  {
+    "council": "South Lanarkshire Council",
+    "city": "South Lanarkshire",
+    "country": "Scotland",
+    "url": "http://www.southlanarkshire.gov.uk/info/200156/bins_and_recycling/1670/bin_collections"
+  },
+  {
+    "council": "South Norfolk District Council",
+    "city": "South Norfolk",
+    "country": "England",
+    "url": "https://www.southnorfolkandbroadland.gov.uk/rubbish/find-bin-collection-day"
+  },
+  {
+    "council": "South Oxfordshire District Council",
+    "city": "South Oxfordshire",
+    "country": "England",
+    "url": "https://www.southoxon.gov.uk/waste"
+  },
+  {
+    "council": "South Ribble Borough Council",
+    "city": "South Ribble",
+    "country": "England",
+    "url": "http://www.southribble.gov.uk/"
+  },
+  {
+    "council": "South Staffordshire Council",
+    "city": "South Staffordshire",
+    "country": "England",
+    "url": "https://www.sstaffs.gov.uk/bins-recycling/index.cfm"
+  },
+  {
+    "council": "South Tyneside Council",
+    "city": "South Tyneside",
+    "country": "England",
+    "url": "https://www.southtyneside.gov.uk/article/935/Bins-and-recycling"
+  },
+  {
+    "council": "Southampton City Council",
+    "city": "Southampton",
+    "country": "England",
+    "url": "https://www.southampton.gov.uk/bins-recycling/bins/"
+  },
+  {
+    "council": "Southend-on-Sea City Council",
+    "city": "Southend-on-Sea",
+    "country": "England",
+    "url": "https://www.southend.gov.uk/info/200327/rubbish_and_recycling/223/collection_days_delivery_dates_and_getting_additional_sacks"
+  },
+  {
+    "council": "Spelthorne Borough Council",
+    "city": "Spelthorne",
+    "country": "England",
+    "url": "https://www.spelthorne.gov.uk/rubbish"
+  },
+  {
+    "council": "St Albans City and District Council",
+    "city": "St Albans City and",
+    "country": "England",
+    "url": "https://www.stalbans.gov.uk/rubbish-collections"
+  },
+  {
+    "council": "St Helens Council",
+    "city": "St Helens",
+    "country": "England",
+    "url": "https://secure.sthelens.net/website/CollectionDates.nsf/servlet.xsp/CollectionDatesMenu"
+  },
+  {
+    "council": "Stafford Borough Council",
+    "city": "Stafford",
+    "country": "England",
+    "url": "https://www.staffordbc.gov.uk/binday"
+  },
+  {
+    "council": "Staffordshire Moorlands District Council",
+    "city": "Staffordshire Moorlands",
+    "country": "England",
+    "url": "https://www.staffsmoorlands.gov.uk/sm/bins"
+  },
+  {
+    "council": "Stevenage Borough Council",
+    "city": "Stevenage",
+    "country": "England",
+    "url": "http://www.stevenage.gov.uk/recycling-and-waste/refuse-recycling-collections/"
+  },
+  {
+    "council": "Stirling Council",
+    "city": "Stirling",
+    "country": "Scotland",
+    "url": "https://my.stirling.gov.uk/bins-waste-recycling/"
+  },
+  {
+    "council": "Stockport Metropolitan Borough Council",
+    "city": "Stockport Metropolitan",
+    "country": "England",
+    "url": "https://www.stockport.gov.uk/topic/bins-and-recycling"
+  },
+  {
+    "council": "Stockton-on-Tees Borough Council",
+    "city": "Stockton-on-Tees",
+    "country": "England",
+    "url": "https://www.stockton.gov.uk/bins-rubbish-and-recycling"
+  },
+  {
+    "council": "Stoke-on-Trent City Council",
+    "city": "Stoke-on-Trent",
+    "country": "England",
+    "url": "https://www.stoke.gov.uk/homepage/121/bin_day_calendar_view"
+  },
+  {
+    "council": "Stratford-on-Avon District Council",
+    "city": "Stratford-on-Avon",
+    "country": "England",
+    "url": "https://www.stratford.gov.uk/waste-recycling/help-with-your-collection.cfm"
+  },
+  {
+    "council": "Stroud District Council",
+    "city": "Stroud",
+    "country": "England",
+    "url": "https://www.stroud.gov.uk/environment/bins-rubbish-recycling"
+  },
+  {
+    "council": "Sunderland City Council",
+    "city": "Sunderland",
+    "country": "England",
+    "url": "http://www.sunderland.gov.uk/bindays"
+  },
+  {
+    "council": "Surrey Heath Borough Council",
+    "city": "Surrey Heath",
+    "country": "England",
+    "url": "http://www.surreyheath.gov.uk/node/53"
+  },
+  {
+    "council": "Swale Borough Council",
+    "city": "Swale",
+    "country": "England",
+    "url": "http://www.swale.gov.uk/my-collection-day/"
+  },
+  {
+    "council": "Swindon Borough Council",
+    "city": "Swindon",
+    "country": "England",
+    "url": "http://www.swindon.gov.uk/householdwaste"
+  },
+  {
+    "council": "Tameside Metropolitan Borough Council",
+    "city": "Tameside Metropolitan",
+    "country": "England",
+    "url": "https://www.tameside.gov.uk/recycling"
+  },
+  {
+    "council": "Tamworth Borough Council",
+    "city": "Tamworth",
+    "country": "England",
+    "url": "https://www.tamworth.gov.uk/bins"
+  },
+  {
+    "council": "Tandridge District Council",
+    "city": "Tandridge",
+    "country": "England",
+    "url": "https://www.tandridge.gov.uk/Recycling-and-rubbish/Has-your-bin-been-missed"
+  },
+  {
+    "council": "Teignbridge District Council",
+    "city": "Teignbridge",
+    "country": "England",
+    "url": "http://www.teignbridge.gov.uk/bins"
+  },
+  {
+    "council": "Telford & Wrekin Council",
+    "city": "Telford & Wrekin",
+    "country": "England",
+    "url": "http://www.telford.gov.uk/info/1003/bins_and_recycling/221/report_a_missed_bin_collection"
+  },
+  {
+    "council": "Tendring District Council",
+    "city": "Tendring",
+    "country": "England",
+    "url": "https://www.tendringdc.gov.uk/recycling-rubbish/check/rubbish-recycling-collection-days"
+  },
+  {
+    "council": "Test Valley Borough Council",
+    "city": "Test Valley",
+    "country": "England",
+    "url": "http://www.testvalley.gov.uk/"
+  },
+  {
+    "council": "Tewkesbury Borough Council",
+    "city": "Tewkesbury",
+    "country": "England",
+    "url": "https://www.tewkesbury.gov.uk/waste-and-recycling?rq=bin%20collection"
+  },
+  {
+    "council": "Thanet District Council",
+    "city": "Thanet",
+    "country": "England",
+    "url": "https://www.thanet.gov.uk/online-services/your-collection-day/"
+  },
+  {
+    "council": "The Highland Council",
+    "city": "The Highland",
+    "country": "Scotland",
+    "url": "http://www.highland.gov.uk/info/1054/rubbish_and_recycling"
+  },
+  {
+    "council": "The Moray Council",
+    "city": "The Moray",
+    "country": "Scotland",
+    "url": "http://bindayfinder.moray.gov.uk/"
+  },
+  {
+    "council": "Three Rivers District Council",
+    "city": "Three Rivers",
+    "country": "England",
+    "url": "http://www.threerivers.gov.uk/Default.aspx/Web/GreenBins"
+  },
+  {
+    "council": "Thurrock Council",
+    "city": "Thurrock",
+    "country": "England",
+    "url": "https://www.thurrock.gov.uk/wheeled-bin-collection-days"
+  },
+  {
+    "council": "Tonbridge and Malling Borough Council",
+    "city": "Tonbridge and Malling",
+    "country": "England",
+    "url": "https://www.tmbc.gov.uk/bins-waste"
+  },
+  {
+    "council": "Torbay Council",
+    "city": "Torbay",
+    "country": "England",
+    "url": "http://www.torbay.gov.uk/waste"
+  },
+  {
+    "council": "Torfaen County Borough Council",
+    "city": "Torfaen County",
+    "country": "Wales",
+    "url": "http://www.torfaen.gov.uk/en/RubbishAndRecycling/Householdwaste-rubbishcollections/Bin-Collection-Days.aspx"
+  },
+  {
+    "council": "Torridge District Council",
+    "city": "Torridge",
+    "country": "England",
+    "url": "https://www.torridge.gov.uk/forms/firmstep/wastecalendar.html"
+  },
+  {
+    "council": "Trafford Metropolitan Borough Council",
+    "city": "Trafford Metropolitan",
+    "country": "England",
+    "url": "http://www.trafford.gov.uk/bincollections/"
+  },
+  {
+    "council": "Tunbridge Wells Borough Council",
+    "city": "Tunbridge Wells",
+    "country": "England",
+    "url": "https://www.tunbridgewells.gov.uk/bins-and-recycling/check-your-bin-collection-day"
+  },
+  {
+    "council": "Uttlesford District Council",
+    "city": "Uttlesford",
+    "country": "England",
+    "url": "http://bins.uttlesford.gov.uk/"
+  },
+  {
+    "council": "Vale of Glamorgan Council",
+    "city": "Vale of Glamorgan",
+    "country": "Wales",
+    "url": "https://www.valeofglamorgan.gov.uk/"
+  },
+  {
+    "council": "Vale of White Horse District Council",
+    "city": "Vale of White Horse",
+    "country": "England",
+    "url": "https://www.whitehorsedc.gov.uk/waste"
+  },
+  {
+    "council": "Wakefield Metropolitan District Council",
+    "city": "Wakefield Metropolitan",
+    "country": "England",
+    "url": "http://www.wakefield.gov.uk/site/where-i-live"
+  },
+  {
+    "council": "Walsall Metropolitan Borough Council",
+    "city": "Walsall Metropolitan",
+    "country": "England",
+    "url": "https://go.walsall.gov.uk/bins/check_your_bin_collection_dates"
+  },
+  {
+    "council": "Warrington Borough Council",
+    "city": "Warrington",
+    "country": "England",
+    "url": "https://www.warrington.gov.uk/your-next-bin-collection-day"
+  },
+  {
+    "council": "Warwick District Council",
+    "city": "Warwick",
+    "country": "England",
+    "url": "http://www.warwickdc.gov.uk/info/20478/refuse_collection"
+  },
+  {
+    "council": "Watford Borough Council",
+    "city": "Watford",
+    "country": "England",
+    "url": "https://watfordbc-self.achieveservice.com/en/service/Bin_collections"
+  },
+  {
+    "council": "Waverley Borough Council",
+    "city": "Waverley",
+    "country": "England",
+    "url": "https://www.waverley.gov.uk/bins"
+  },
+  {
+    "council": "Wealden District Council",
+    "city": "Wealden",
+    "country": "England",
+    "url": "https://www.wealden.gov.uk/recycling-and-waste/bin-search/"
+  },
+  {
+    "council": "Welwyn Hatfield Council",
+    "city": "Welwyn Hatfield",
+    "country": "England",
+    "url": "https://www.welhat.gov.uk/rubbish-recycling/check-bin-collection-day"
+  },
+  {
+    "council": "West Berkshire Council",
+    "city": "West Berkshire",
+    "country": "England",
+    "url": "https://www.westberks.gov.uk/rubbishandrecyclingcollections"
+  },
+  {
+    "council": "West Devon Borough Council",
+    "city": "West Devon",
+    "country": "England",
+    "url": "https://www.westdevon.gov.uk/article/4526/Find-your-Recycling-Waste-collection-day"
+  },
+  {
+    "council": "West Dunbartonshire Council",
+    "city": "West Dunbartonshire",
+    "country": "Scotland",
+    "url": "http://www.west-dunbarton.gov.uk/rubbish-and-recycling/bin-collection-day/"
+  },
+  {
+    "council": "West Lancashire Borough Council",
+    "city": "West Lancashire",
+    "country": "England",
+    "url": "http://www.westlancs.gov.uk/refuse-recycling.aspx"
+  },
+  {
+    "council": "West Lindsey District Council",
+    "city": "West Lindsey",
+    "country": "England",
+    "url": "https://www.west-lindsey.gov.uk/bins-waste-recycling/find-your-bin-collection-day"
+  },
+  {
+    "council": "West Lothian Council",
+    "city": "West Lothian",
+    "country": "Scotland",
+    "url": "https://www.westlothian.gov.uk/bins"
+  },
+  {
+    "council": "West Northamptonshire Council",
+    "city": "West Northamptonshire",
+    "country": "England",
+    "url": "https://www.westnorthants.gov.uk/bins-recycling-and-street-cleaning/bin-collection-day"
+  },
+  {
+    "council": "West Oxfordshire District Council",
+    "city": "West Oxfordshire",
+    "country": "England",
+    "url": "https://www.westoxon.gov.uk/report/"
+  },
+  {
+    "council": "West Suffolk District Council",
+    "city": "West Suffolk",
+    "country": "England",
+    "url": "https://www.westsuffolk.gov.uk/bins/newbincollectiondays.cfm"
+  },
+  {
+    "council": "Wigan Metropolitan Borough Council",
+    "city": "Wigan Metropolitan",
+    "country": "England",
+    "url": "https://apps.wigan.gov.uk/MyNeighbourhood/"
+  },
+  {
+    "council": "Wiltshire Council",
+    "city": "Wiltshire",
+    "country": "England",
+    "url": "https://ilambassadorformsprod.azurewebsites.net/wastecollectiondays/index"
+  },
+  {
+    "council": "Winchester City Council",
+    "city": "Winchester",
+    "country": "England",
+    "url": "http://www.winchester.gov.uk/bins"
+  },
+  {
+    "council": "Wirral Council",
+    "city": "Wirral",
+    "country": "England",
+    "url": "https://www.wirral.gov.uk/bins-and-recycling/bin-collection-dates"
+  },
+  {
+    "council": "Woking Borough Council",
+    "city": "Woking",
+    "country": "England",
+    "url": "https://www.woking.gov.uk/bins-waste-recycling"
+  },
+  {
+    "council": "Wokingham Borough Council",
+    "city": "Wokingham",
+    "country": "England",
+    "url": "https://www.wokingham.gov.uk/rubbish-and-recycling/collections/"
+  },
+  {
+    "council": "Worcester City Council",
+    "city": "Worcester",
+    "country": "England",
+    "url": "http://selfserve.worcester.gov.uk/wccroundlookup/wcc_search.jsp"
+  },
+  {
+    "council": "Worthing Borough Council",
+    "city": "Worthing",
+    "country": "England",
+    "url": "https://www.adur-worthing.gov.uk/bin-day/"
+  },
+  {
+    "council": "Wrexham County Borough Council",
+    "city": "Wrexham County",
+    "country": "Wales",
+    "url": "https://www.wrexham.gov.uk/services/bins-and-recycling"
+  },
+  {
+    "council": "Wychavon District Council",
+    "city": "Wychavon",
+    "country": "England",
+    "url": "http://www.wychavon.gov.uk/refuse"
+  },
+  {
+    "council": "Wyre Council",
+    "city": "Wyre",
+    "country": "England",
+    "url": "https://www.wyre.gov.uk/bins"
+  },
+  {
+    "council": "Wyre Forest District Council",
+    "city": "Wyre Forest",
+    "country": "England",
+    "url": "http://www.wyreforest.gov.uk/wfdcbins.asp"
+  }
+]

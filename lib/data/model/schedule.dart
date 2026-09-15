@@ -4,7 +4,7 @@ import 'package:wasteful/core/constants/repeat_interval.dart';
 
 class Schedule {
   final String id;                    // unique id, not a BinType
-  final List<BinType> binTypes;       // a schedule can cover multiple bin types
+  final BinType binTypes;       // a schedule can cover multiple bin types
   final int collectionWeekday;        // 1 = Monday ... 7 = Sunday (DateTime convention)
   final RepeatInterval repeatInterval;
   final DateTime startDate;
@@ -27,7 +27,7 @@ class Schedule {
 
   Schedule copyWith({
     String? id,
-    List<BinType>? binTypes,
+    BinType? binTypes,
     int? collectionWeekday,
     RepeatInterval? repeatInterval,
     DateTime? startDate,
@@ -58,6 +58,7 @@ class Schedule {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'bin_type': binTypes.name,
       'collection_weekday': collectionWeekday,
       'repeat_interval': repeatInterval.name,
       'start_date': startDate.toIso8601String(),
@@ -73,32 +74,32 @@ class Schedule {
   /// Builds a Schedule from a `schedules` table row.
   /// [binTypes] must be fetched separately from `schedule_bin_types`
   /// and passed in — this method doesn't touch the database itself.
-  factory Schedule.fromMap(Map<String, dynamic> map, List<BinType> binTypes) {
-    TimeOfDay? parseTime(String? raw) {
-      if (raw == null) return null;
-      final parts = raw.split(':');
-      return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
-    }
-
+  factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
       id: map['id'] as String,
-      binTypes: binTypes,
+      binTypes: BinType.values.byName(map['bin_type'] as String),
       collectionWeekday: map['collection_weekday'] as int,
-      repeatInterval: RepeatInterval.values
-          .firstWhere((r) => r.name == map['repeat_interval']),
+      repeatInterval: RepeatInterval.values.byName(map['repeat_interval'] as String),
       startDate: DateTime.parse(map['start_date'] as String),
-      notificationTime: parseTime(map['notification_time'] as String?),
+      notificationTime: map['notification_time'] != null
+          ? _parseTimeOfDay(map['notification_time'] as String)
+          : null,
       isArchived: (map['is_archived'] as int) == 1,
       createdAt: DateTime.parse(map['created_at'] as String),
       updatedAt: DateTime.parse(map['updated_at'] as String),
     );
   }
 
+  static TimeOfDay _parseTimeOfDay(String value) {
+    final parts = value.split(':');
+    return TimeOfDay(hour: int.parse(parts[0]), minute: int.parse(parts[1]));
+  }
+
   @override
   String toString() {
     return 'Schedule('
         'id: $id, '
-        'binTypes: ${binTypes.map((b) => b.name).join(", ")}, '
+        'binTypes: $binTypes, '
         'collectionWeekday: $collectionWeekday, '
         'repeatInterval: ${repeatInterval.name}, '
         'startDate: ${startDate.toIso8601String()}, '

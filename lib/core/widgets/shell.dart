@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
-import 'package:wasteful/features/add_schedule/add_schedule.dart';
+import 'package:wasteful/features/schedule/add_schedule.dart';
 import 'package:wasteful/features/settings/settings.dart';
 import '../theme/app_colors.dart';
 import '../../features/home/home_screen.dart';

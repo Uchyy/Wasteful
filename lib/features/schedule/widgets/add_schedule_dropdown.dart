@@ -17,6 +17,7 @@ class AddScheduleItem<T> {
 class AddScheduleDropdown<T> extends StatefulWidget {
   final List<AddScheduleItem<T>> items;
   final T? initialValue;
+  final String selectLabel;
   final ValueChanged<T?> onSelected;
   final String Function(T?)? labelBuilder;
   final IconData icon;
@@ -25,6 +26,7 @@ class AddScheduleDropdown<T> extends StatefulWidget {
   const AddScheduleDropdown({
     super.key,
     required this.items,
+    required this.selectLabel,
     required this.onSelected,
     this.initialValue,
     this.labelBuilder,
@@ -45,7 +47,7 @@ class _AddScheduleDropdownState<T> extends State<AddScheduleDropdown<T>> {
     final hasError = widget.errorText != null;
 
     final selectedItem = widget.items.where((i) => i.value == _selected).firstOrNull;
-    final label = widget.labelBuilder?.call(_selected) ?? selectedItem?.label ?? 'Select';
+    final label = widget.labelBuilder?.call(_selected) ?? selectedItem?.label ?? 'Select ${widget.selectLabel}';
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

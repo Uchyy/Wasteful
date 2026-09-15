@@ -42,6 +42,10 @@ dependencies:
   google_fonts: ^8.2.1
   shared_preferences: ^2.5.5
   sqflite: ^2.4.2+1
+  sqflite_common_ffi: ^2.3.4
+  sqflite_common_ffi_web: ^1.1.1
+  searchfield: ^1.4.0
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
@@ -94,6 +98,12 @@ flutter:
     - assets/icons/bin/bin_blue.png
     - assets/icons/bin/bin_brown.png
     - assets/icons/bin/bin_gray.png
+
+    - assets/data/uk_councils_bin_collection.json
+    - assets/data/faq.json
+    - assets/data/about.json
+    - assets/data/privacy_policy.json
+    - assets/data/terms_of_service.json
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -113,7 +123,7 @@ flutter_native_splash:
   color: "#FE852D"
   android: true
   fullscreen: true
-  image: assets/images/splash.png  
+  image: assets/icons/wasteful_icon.png  
   android_12:
     image: assets/icons/wasteful_icon.png  
     icon_background_color: "#FE852D"

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wasteful/data/model/address.dart';
-import 'package:wasteful/features/add_schedule/widgets/add_schedule_dropdown.dart';
+import 'package:wasteful/features/schedule/widgets/add_schedule_dropdown.dart';
 import 'package:wasteful/features/home/home_controller.dart';
 import '../../../core/theme/app_colors.dart';
 
@@ -61,7 +61,9 @@ class _AddressDropdownScheduleState extends ConsumerState<AddressDropdownSchedul
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
+
         AddScheduleDropdown<String?>(
+          selectLabel: "address",
           initialValue: widget.selectedId,
           icon: Icons.home_filled,
           items: [

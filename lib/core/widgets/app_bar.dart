@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget? actionWidget;
   final bool showBack;
+  final bool? centerTitle;
 
   const CustomAppBar({
     super.key,
@@ -16,20 +17,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.actionWidget,
     this.showBack = true,
+    this.centerTitle = true
   });
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final height = MediaQuery.of(context).size.height * 0.3;
 
     return AppBar(
+      toolbarHeight: height,
       automaticallyImplyLeading: true,
       backgroundColor: colors.background,
       foregroundColor: colors.inverseBackground,
       //elevation: 4,
-      centerTitle: showBack,
+      centerTitle: centerTitle,
       actionsPadding: EdgeInsets.symmetric(
         horizontal: context.padding(PaddingSize.small).horizontal,
+        //vertical: context.padding(PaddingSize.medium).vertical,
       ),
       iconTheme: IconThemeData(
         color: colors.inverseBackground,

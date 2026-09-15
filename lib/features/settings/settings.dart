@@ -1,6 +1,7 @@
 // features/settings/settings_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/theme/app_colors.dart';
@@ -8,6 +9,7 @@ import 'package:wasteful/core/theme/app_text_styles.dart';
 import 'package:wasteful/core/theme/theme_provider.dart';
 import 'package:wasteful/core/widgets/app_bar.dart';
 import 'package:wasteful/core/widgets/section_wrapper.dart';
+import 'package:wasteful/router/app_router.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -43,13 +45,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   SettingsItem(
                     title: "Manage Addresses and Schedule", 
                     leading: Icon(Icons.calendar_month_outlined, size: context.fontSize(FontSize.extraLarge) * 1.5),
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.manageSchedules), 
                   ),
                   
                   SettingsItem(
                     title: "Add new Schedule", 
                     leading: Icon(Icons.add_circle_outline, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.addSchedule), 
                   ),  
                 ]
               ),
@@ -62,31 +64,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   SettingsItem(
                     title: "Find my council", 
                     leading: Icon(Icons.search_outlined, size: context.fontSize(FontSize.extraLarge) * 1.5),
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.findCouncil), 
                   ),
                   
                   SettingsItem(
                     title: "Help", 
                     leading: Icon(Icons.help_outline, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
-                  ),  
-
-                  SettingsItem(
-                    title: "Privacy Policy", 
-                    leading: Icon(Icons.article_outlined, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
-                  ),  
-
-                  SettingsItem(
-                    title: "Terms of Service", 
-                    leading: Icon(Icons.article, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.help), 
                   ),  
 
                   SettingsItem(
                     title: "About Wasteful", 
                     leading: Icon(Icons.info_outline, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.about), 
                   ),  
                 ]
               ),
@@ -145,7 +135,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   SettingsItem(
                     title: "Notifications", 
                     leading: Icon(Icons.notifications_outlined, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.manageSchedules), 
                   ),  
                 ]
               ),

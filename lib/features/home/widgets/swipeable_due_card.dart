@@ -36,6 +36,16 @@ class _SwipeableDueCardsState extends State<SwipeableDueCards> {
     if (widget.entries.isEmpty) return const SizedBox.shrink();
     final height = MediaQuery.of(context).size.height * 0.2;
 
+    // Single entry doesn't need PageView's multi-card viewport sizing —
+    // just show the one card at full width.
+    if (widget.entries.length == 1) {
+      return SizedBox(
+        height: height,
+        width: double.infinity,
+        child: _DueCard(entry: widget.entries.first),
+      );
+    }
+
     return Column(
       children: [
         SizedBox(
@@ -50,25 +60,23 @@ class _SwipeableDueCardsState extends State<SwipeableDueCards> {
             itemBuilder: (context, index) => _DueCard(entry: widget.entries[index]),
           ),
         ),
-        if (widget.entries.length > 1) ...[
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(widget.entries.length, (i) {
-              final isActive = i == _page;
-              return AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                margin: const EdgeInsets.symmetric(horizontal: 3),
-                width: isActive ? 16 : 6,
-                height: 6,
-                decoration: BoxDecoration(
-                  color: isActive ? context.colors.accent : context.colors.border,
-                  borderRadius: BorderRadius.circular(3),
-                ),
-              );
-            }),
-          ),
-        ],
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(widget.entries.length, (i) {
+            final isActive = i == _page;
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              margin: const EdgeInsets.symmetric(horizontal: 3),
+              width: isActive ? 16 : 6,
+              height: 6,
+              decoration: BoxDecoration(
+                color: isActive ? context.colors.accent : context.colors.border,
+                borderRadius: BorderRadius.circular(3),
+              ),
+            );
+          }),
+        ),
       ],
     );
   }
@@ -81,24 +89,30 @@ class _DueCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final primaryBinType = entry.schedule.binTypes.first;
+    final primaryBinType = entry.schedule.binTypes;
 
     return Container(
+      width: double.infinity,
       margin: EdgeInsets.only(right: context.padding(PaddingSize.small).right, top: context.padding(PaddingSize.small).top, ),
-      padding: EdgeInsets.zero,
+      //padding: context.padding(PaddingSize.small),
       decoration: BoxDecoration(
         color: Color.lerp(primaryBinType.color, Colors.white, 0.8)!,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: colors.border),
       ),
+
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+
           Container(
             width: context.fontSize(FontSize.extraLarge) * 5,
+            //padding: EdgeInsets.zero,
             height: double.infinity,
-            child: primaryBinType.icon(size: context.fontSize(FontSize.extraLarge) * 4),
+            child: primaryBinType.getfallBackIcon(size: context.fontSize(FontSize.extraLarge) * 3),
           ),
-          const SizedBox(width: 12),
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +136,7 @@ class _DueCard extends StatelessWidget {
                 ),
 
                 Text(
-                  entry.schedule.binTypes.map((b) => b.label).join(' + '),
+                  entry.schedule.binTypes.label,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: context.fontSize(FontSize.normal),  letterSpacing: 1.5, color: Colors.black,   fontWeight: FontWeight.w500),
                 ),
               ],
