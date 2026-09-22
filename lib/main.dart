@@ -26,6 +26,7 @@ Future<void> main() async {
     await WorkManagerService.instance.initialize();
     await WorkManagerService.instance.registerDailyTask();
     final settingsRepository = SettingsRepository();
+    await NotificationService.instance.cancelAll();
 
     final notificationSyncService = NotificationSyncService(
       repository: ScheduleRepository(),

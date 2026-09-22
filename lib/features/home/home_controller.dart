@@ -1,9 +1,10 @@
 // features/home/home_controller.dart
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/data/model/schedule.dart';
-import 'package:wasteful/data/repository/schdeule_provider.dart';
+import 'package:wasteful/data/repository/schedule_provider.dart';
 
 class AddressesNotifier extends StateNotifier<List<Address>> {
   final Ref ref;
@@ -31,21 +32,39 @@ class AddressesNotifier extends StateNotifier<List<Address>> {
     await _loadFromDb();
   }
 
-  Future<void> updateSchedule(String addressId, Schedule schedule) async {
-    final repository = ref.read(scheduleRepositoryProvider);
-    await repository.updateSchedule(addressId, schedule);
-    await _loadFromDb();
-  }
+ Future<void> updateSchedule(
+  String addressId,
+  Schedule schedule,
+) async {
+  debugPrint('=== ADDRESSES NOTIFIER: UPDATE SCHEDULE ===');
+  debugPrint('Address ID: $addressId');
+  debugPrint('Schedule ID: ${schedule.id}');
+  debugPrint('Notification time: ${schedule.notificationTime}');
+  debugPrint('Reminder timing: ${schedule.reminderTiming}');
+
+  final service = ref.read(scheduleServiceProvider);
+
+  await service.updateSchedule(
+    addressId,
+    schedule,
+  );
+
+  debugPrint('=== ADDRESSES NOTIFIER: UPDATE COMPLETE ===');
+
+  await _loadFromDb();
+
+  debugPrint('=== ADDRESSES NOTIFIER: STATE RELOADED ===');
+}
 
   Future<void> removeScheduleFromAddress(String addressId, String scheduleId) async {
-    final repository = ref.read(scheduleRepositoryProvider);
-    await repository.deleteSchedule(scheduleId);
+    final service = ref.read(scheduleServiceProvider);
+    await service.deleteSchedule(scheduleId);
     await _loadFromDb();
   }
 
   Future<void> addSchedule( String addressId, Schedule schedule, ) async {
-    final repository = ref.read(scheduleRepositoryProvider);
-    await repository.addSchedule( addressId, schedule,);
+    final service = ref.read(scheduleServiceProvider);
+    await service.addSchedule( addressId, schedule,);
     await _loadFromDb();
   }
 }

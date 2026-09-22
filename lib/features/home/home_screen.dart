@@ -12,6 +12,7 @@ import 'package:wasteful/core/widgets/section_wrapper.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/home/widgets/address_dropdown.dart';
 import 'package:wasteful/features/home/widgets/swipeable_due_card.dart';
+import 'package:wasteful/notifications/notification_service.dart';
 import 'package:wasteful/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
@@ -87,6 +88,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   child: const Text('+ Add a Schedule')
                 ),
+
+                ElevatedButton(
+                  onPressed: () async {
+                    await NotificationService.instance.debugPending();
+                    await NotificationService.instance.showTestNotification();
+                    await NotificationService.instance.debugExactAlarmPermission();
+                    await NotificationService.instance.scheduleDebugNotification(
+                      DateTime.now().add(const Duration(minutes: 2)),
+                    );
+                  },
+                  child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
+                )
               ],
             ),
           ),
@@ -193,7 +206,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ]
               ),
 
-             
+              ElevatedButton(
+                onPressed: () async {
+                  await NotificationService.instance.debugPending();
+                  await NotificationService.instance.showTestNotification();
+                  await NotificationService.instance.debugExactAlarmPermission();
+                  await NotificationService.instance.scheduleDebugNotification(
+                    DateTime.now().add(const Duration(minutes: 2)),
+                  );
+                },
+                child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
+              )
 
             ],
           ),
@@ -207,15 +230,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 /*
 
  ElevatedButton(
-                onPressed: () async {
-                  await NotificationService.instance.debugPending();
-                  await NotificationService.instance.showTestNotification();
-                  await NotificationService.instance.debugExactAlarmPermission();
-                  await NotificationService.instance.scheduleDebugNotification(
-                    DateTime.now().add(const Duration(minutes: 2)),
-                  );
-                },
-                child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
-              )
+  onPressed: () async {
+    await NotificationService.instance.debugPending();
+    await NotificationService.instance.showTestNotification();
+    await NotificationService.instance.debugExactAlarmPermission();
+    await NotificationService.instance.scheduleDebugNotification(
+      DateTime.now().add(const Duration(minutes: 2)),
+    );
+  },
+  child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
+)
 
 */

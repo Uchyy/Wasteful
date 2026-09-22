@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/data/repository/schedule_repository.dart';
 import 'package:wasteful/notifications/schedule_notification_scheduler.dart';
@@ -11,10 +12,7 @@ class ScheduleService {
   final ScheduleRepository repository;
   final ScheduleNotificationScheduler notificationScheduler;
 
-  Future<void> addSchedule(
-    String addressId,
-    Schedule schedule,
-  ) async {
+  Future<void> addSchedule( String addressId, Schedule schedule,) async {
     await repository.addSchedule(
       addressId,
       schedule,
@@ -27,29 +25,76 @@ class ScheduleService {
     );
   }
 
-  Future<void> updateSchedule( String addressId, Schedule schedule,) async {
-    final oldSchedule =
-        await repository.getSchedule(schedule.id);
+Future<void> updateSchedule(
+  String addressId,
+  Schedule schedule,
+) async {
+  debugPrint('=== SCHEDULE SERVICE: UPDATE ===');
+  debugPrint('Schedule ID: ${schedule.id}');
+  debugPrint('Address ID: $addressId');
+  debugPrint('New notification time: ${schedule.notificationTime}');
+  debugPrint('New reminder timing: ${schedule.reminderTiming}');
 
-    await repository.updateSchedule(
-      addressId,
-      schedule,
-    );
+  final oldSchedule = await repository.getSchedule(schedule.id);
 
-    await _tryNotificationOperation(
-      () async {
-        if (oldSchedule != null) {
-          await notificationScheduler.cancelReminder(
-            oldSchedule,
-          );
-        }
+  debugPrint('OLD SCHEDULE: ${oldSchedule?.id}');
+  debugPrint(
+    'OLD notification time: ${oldSchedule?.notificationTime}',
+  );
+  debugPrint(
+    'OLD reminder timing: ${oldSchedule?.reminderTiming}',
+  );
+
+  await repository.updateSchedule(
+    addressId,
+    schedule,
+  );
+
+  debugPrint('DATABASE UPDATE COMPLETE');
+
+  await _tryNotificationOperation(
+    () async {
+      if (oldSchedule != null) {
+        debugPrint(
+          'CANCELLING OLD NOTIFICATION: ${oldSchedule.id}',
+        );
 
         await notificationScheduler.cancelReminder(
-          schedule,
+          oldSchedule,
         );
-      },
-    );
-  }
+
+        debugPrint('OLD NOTIFICATION CANCEL COMPLETE');
+      }
+
+      debugPrint(
+        'SCHEDULING NEW NOTIFICATION: ${schedule.id}',
+      );
+
+      await notificationScheduler.scheduleReminder(
+        schedule,
+      );
+
+      debugPrint('NEW NOTIFICATION SCHEDULE COMPLETE');
+
+      final pending = await notificationScheduler.notificationService.pending();
+
+      debugPrint(
+        'PENDING NOTIFICATIONS AFTER UPDATE: ${pending.length}',
+      );
+
+      for (final notification in pending) {
+        debugPrint(
+          'PENDING: '
+          'id=${notification.id}, '
+          'title=${notification.title}, '
+          'payload=${notification.payload}',
+        );
+      }
+    },
+  );
+
+  debugPrint('=== SCHEDULE SERVICE: UPDATE FINISHED ===');
+}
 
   Future<void> deleteSchedule(String id) async {
     final schedule =  await repository.getSchedule(id);
@@ -67,8 +112,7 @@ class ScheduleService {
   }
 
   Future<void> archiveSchedule(String id) async {
-    final schedule =
-        await repository.getSchedule(id);
+    final schedule =  await repository.getSchedule(id);
 
     await repository.archiveSchedule(id);
 

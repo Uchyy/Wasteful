@@ -24,17 +24,12 @@ class ScheduleService {
     );
   }
 
-  Future<void> updateSchedule( String addressId, Schedule schedule,) async {
-    final oldSchedule =
-        await repository.getSchedule(schedule.id);
+  Future<void> updateSchedule( String addressId,Schedule schedule, ) async {
+    final oldSchedule = await repository.getSchedule(schedule.id);
 
-    await repository.updateSchedule(
-      addressId,
-      schedule,
-    );
+    await repository.updateSchedule( addressId, schedule,);
 
-    await _tryNotificationOperation(
-      () async {
+    await _tryNotificationOperation( () async {
         if (oldSchedule != null) {
           await notificationScheduler.cancelReminder(
             oldSchedule,
@@ -47,7 +42,7 @@ class ScheduleService {
       },
     );
   }
-
+  
   Future<void> deleteSchedule(String id) async {
     final schedule =  await repository.getSchedule(id);
 

@@ -23,13 +23,7 @@ class ScheduleNotificationScheduler {
       return;
     }
 
-    final collectionDate = schedule.reminderTiming == ReminderTiming.morningOf && schedule.isCollectionToday
-        ? DateTime(
-            DateTime.now().year,
-            DateTime.now().month,
-            DateTime.now().day,
-          )
-        : schedule.nextCollectionDate();
+    final collectionDate = _collectionDateForNotification(schedule);
 
     final repository = ScheduleRepository();
     final label = await repository.getAddressLabel(schedule.addressId);
@@ -66,51 +60,54 @@ class ScheduleNotificationScheduler {
       return;
     }
 
-    final id = notificationId(
-      schedule.id,
-      collectionDate,
-    );
+    final id = notificationId( schedule.id,);
 
     debugPrint('Scheduling notification ID: $id');
 
     await notificationService.schedule(
-  id: id,
-  title: _title(schedule.reminderTiming, label),
-  body: _body(schedule),
-  dateTime: notificationDate,
-  payload: schedule.id,
-);
+      id: id,
+      title: _title(schedule.reminderTiming, label),
+      body: _body(schedule),
+      dateTime: notificationDate,
+      payload: schedule.id,
+    );
 
-debugPrint('NOTIFICATION SCHEDULED SUCCESSFULLY');
+    debugPrint('NOTIFICATION SCHEDULED SUCCESSFULLY');
 
-final pending = await notificationService.pending();
+    final pending = await notificationService.pending();
 
-final exists = pending.any((notification) => notification.id == id);
+    final exists = pending.any((notification) => notification.id == id);
 
-debugPrint(
-  'REAL NOTIFICATION STILL PENDING: $exists',
-);
+    debugPrint(
+      'REAL NOTIFICATION STILL PENDING: $exists',
+    );
 
-for (final notification in pending) {
-  debugPrint(
-    'PENDING -> '
-    'id=${notification.id}, '
-    'title=${notification.title}, '
-    'body=${notification.body}, '
-    'payload=${notification.payload}',
-  );
-}
+    for (final notification in pending) {
+      debugPrint(
+        'PENDING -> '
+        'id=${notification.id}, '
+        'title=${notification.title}, '
+        'body=${notification.body}, '
+        'payload=${notification.payload}',
+      );
+    }
   }
 
   Future<void> cancelReminder(Schedule schedule) async {
-    final collectionDate = schedule.nextCollectionDate();
+    final collectionDate = _collectionDateForNotification(schedule);
 
-    await notificationService.cancel(
-      notificationId(
-        schedule.id,
-        collectionDate,
-      ),
+    final id = notificationId(
+      schedule.id,
     );
+
+    debugPrint('=== CANCEL REMINDER ===');
+    debugPrint('Schedule: ${schedule.id}');
+    debugPrint('Collection date: $collectionDate');
+    debugPrint('Notification ID: $id');
+
+    await notificationService.cancel(id);
+
+    debugPrint('CANCEL COMPLETE: $id');
   }
 
   Future<void> sync( List<Schedule> schedules, { TimeOfDay? defaultTime,}) async {
@@ -148,15 +145,11 @@ for (final notification in pending) {
         '${schedule.reminderTiming == ReminderTiming.eveningBefore ? 'tomorrow' : 'today'}.';
   }
 
-  static int notificationId( String scheduleId, DateTime collectionDate, ) {
-    final value ='$scheduleId-${collectionDate.year}-${collectionDate.month}-${collectionDate.day}';
-
+  static int notificationId(String scheduleId) {
     var hash = 0;
-
-    for (final codeUnit in value.codeUnits) {
+    for (final codeUnit in scheduleId.codeUnits) {
       hash = ((hash << 5) - hash + codeUnit) & 0x7fffffff;
     }
-
     return hash;
   }
 
@@ -167,5 +160,20 @@ for (final notification in pending) {
       date.month,
       date.day + days,
     );
+  }
+
+  DateTime _collectionDateForNotification(Schedule schedule) {
+    if (schedule.reminderTiming == ReminderTiming.morningOf &&
+        schedule.isCollectionToday) {
+      final now = DateTime.now();
+
+      return DateTime(
+        now.year,
+        now.month,
+        now.day,
+      );
+    }
+
+    return schedule.nextCollectionDate();
   }
 }
