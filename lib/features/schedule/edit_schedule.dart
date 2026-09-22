@@ -7,7 +7,6 @@ import 'package:wasteful/core/widgets/app_bar.dart';
 import 'package:wasteful/core/widgets/schedule_form.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/home/home_controller.dart';
-import 'package:wasteful/router/app_router.dart';
 
 class EditScheduleScreen extends ConsumerStatefulWidget {
   final String addressId;

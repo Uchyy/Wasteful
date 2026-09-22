@@ -1,8 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:wasteful/data/repository/schdeule_provider.dart';
 import 'package:wasteful/data/repository/schedule_repository.dart';
 import 'package:wasteful/data/repository/settings_repository.dart';
-import 'package:wasteful/features/settings/controllers/settings_controller.dart';
 import 'package:wasteful/notifications/notification_service.dart';
 import 'package:wasteful/notifications/notification_sync_service.dart';
 import 'package:wasteful/notifications/schedule_notification_scheduler.dart';

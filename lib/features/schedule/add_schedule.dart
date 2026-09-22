@@ -6,7 +6,6 @@ import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/widgets/app_bar.dart';
 import 'package:wasteful/core/widgets/schedule_form.dart';
 import 'package:wasteful/data/model/schedule.dart';
-import 'package:wasteful/data/repository/schdeule_provider.dart' hide addressesProvider;
 import 'package:wasteful/features/home/home_controller.dart';
 import 'package:wasteful/router/app_router.dart';
 

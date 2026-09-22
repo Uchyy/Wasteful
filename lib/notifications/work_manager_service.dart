@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wasteful/data/repository/schedule_repository.dart';
 import 'package:wasteful/data/repository/settings_repository.dart';
 import 'package:wasteful/notifications/notification_service.dart';

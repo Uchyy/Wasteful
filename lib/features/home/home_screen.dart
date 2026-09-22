@@ -12,7 +12,6 @@ import 'package:wasteful/core/widgets/section_wrapper.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/home/widgets/address_dropdown.dart';
 import 'package:wasteful/features/home/widgets/swipeable_due_card.dart';
-import 'package:wasteful/notifications/notification_service.dart';
 import 'package:wasteful/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
