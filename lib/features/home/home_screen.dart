@@ -12,6 +12,7 @@ import 'package:wasteful/core/widgets/section_wrapper.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/home/widgets/address_dropdown.dart';
 import 'package:wasteful/features/home/widgets/swipeable_due_card.dart';
+import 'package:wasteful/notifications/notification_service.dart';
 import 'package:wasteful/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
@@ -56,37 +57,38 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             
             child: Column(
               mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            
-              Icon(Icons.location_off_outlined, size: 46, color: colors.textMuted),
-              const SizedBox(height: 16),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              
+                Icon(Icons.location_off_outlined, size: 46, color: colors.textMuted),
+                const SizedBox(height: 16),
 
-              const Text('No addresses yet', style: TextStyle(fontWeight: FontWeight.w500)),
-              const SizedBox(height: 4),
+                const Text('No addresses yet', style: TextStyle(fontWeight: FontWeight.w500)),
+                const SizedBox(height: 4),
 
-              Text(
-                'Add one to start getting reminders',
-                style: TextStyle(fontSize: 12, color: colors.textMuted),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  context.go(AppRoutes.addSchedule);
-                }, 
-                style: ButtonStyle(
-                  elevation: const WidgetStatePropertyAll<double>(4), 
-                  foregroundColor: WidgetStatePropertyAll<Color>(Colors.redAccent),
-                  padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
-                    EdgeInsets.symmetric(vertical: context.padding(PaddingSize.small).vertical,
-                    horizontal: context.padding(PaddingSize.medium).horizontal
+                Text(
+                  'Add one to start getting reminders',
+                  style: TextStyle(fontSize: 12, color: colors.textMuted),
+                ),
+                const SizedBox(height: 20),
+
+                ElevatedButton(
+                  onPressed: () {
+                    context.push(AppRoutes.addSchedule);
+                  }, 
+                  style: ButtonStyle(
+                    elevation: const WidgetStatePropertyAll<double>(4), 
+                    foregroundColor: WidgetStatePropertyAll<Color>(Colors.redAccent),
+                    padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(vertical: context.padding(PaddingSize.small).vertical,
+                      horizontal: context.padding(PaddingSize.medium).horizontal
+                      ),
                     ),
                   ),
+                  child: const Text('+ Add a Schedule')
                 ),
-                child: const Text('+ Add a Schedule')
-              ),
-            ],
+              ],
             ),
           ),
         ),
@@ -190,16 +192,31 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: const Text('No upcoming items'),
                   ), 
                 ]
-              )
+              ),
+
+             
 
             ],
           ),
         )
-
 
       ),
     );
   }
 }
 
+/*
 
+ ElevatedButton(
+                onPressed: () async {
+                  await NotificationService.instance.debugPending();
+                  await NotificationService.instance.showTestNotification();
+                  await NotificationService.instance.debugExactAlarmPermission();
+                  await NotificationService.instance.scheduleDebugNotification(
+                    DateTime.now().add(const Duration(minutes: 2)),
+                  );
+                },
+                child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
+              )
+
+*/

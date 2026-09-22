@@ -69,7 +69,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.notification,
-      builder: (context, state) => const NotificationsScree(),
+      builder: (context, state) => const NotificationSettingsScreen(),
     ),
     GoRoute(
       path: AppRoutes.editSchedule,

@@ -61,7 +61,7 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
           final councils = snapshot.data!;
 
           return Padding(
-            padding: context.padding(PaddingSize.small),
+            padding: context.padding(PaddingSize.medium),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -109,7 +109,8 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          ListTile(
+                          Expanded(
+                            child: ListTile(
                             trailing: Icon(Icons.arrow_forward_ios_outlined, color: colors.inverseBackground,),
                             title: Text(council.council, style: Theme.of(context).textTheme.titleMedium),
                             subtitle: Text(
@@ -118,7 +119,8 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
                                 color: colors.textMuted
                               )
                             ),
-                          )          
+                          ) 
+                          )         
                         ],
                       ),
                     ),
@@ -132,7 +134,7 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
 
                 if (_selectedCouncil != null)
                   Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: context.padding(PaddingSize.small),
                     decoration: BoxDecoration(
                       color: colors.surface,
                       borderRadius: BorderRadius.circular(16),
@@ -168,7 +170,7 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
                   'Can\'t find yours? Search "bin collection days" plus your area or postcode.',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: colors.accent,
+                    color: colors.textPrimary,
                     fontSize: context.fontSize(FontSize.normal)
                   )
                 ),

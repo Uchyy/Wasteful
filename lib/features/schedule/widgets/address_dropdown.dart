@@ -1,6 +1,7 @@
 // features/add_schedule/widgets/address_dropdown_schedule.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wasteful/core/widgets/app_snackbar.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/features/schedule/widgets/add_schedule_dropdown.dart';
 import 'package:wasteful/features/home/home_controller.dart';
@@ -34,23 +35,60 @@ class _AddressDropdownScheduleState extends ConsumerState<AddressDropdownSchedul
     super.dispose();
   }
 
-  void _confirmNewAddress() {
+  void _confirmNewAddress() async {
     final label = _controller.text.trim();
     if (label.isEmpty) return;
 
+    final addresses = ref.read(addressesProvider);
+    final isDuplicate = addresses.any(
+      (a) => a.label.toLowerCase() == label.toLowerCase(),
+    );
+
+    if (isDuplicate) {
+      showAppSnackBar(
+        context,
+        message: 'You already have an address named "$label"',
+        type: SnackType.error,
+      );
+      return;
+    }
+
     final newAddress = Address(
-      id: DateTime.now().millisecondsSinceEpoch.toString(), // temp id until SQLite auto-ids exist
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
       label: label,
       isDefault: false,
       createdAt: DateTime.now(),
       schedules: [],
     );
-    ref.read(addressesProvider.notifier).add(newAddress);
-    widget.onSelected(newAddress.id); // report straight to the form
 
-    _controller.clear();
-    setState(() => _showAddInput = false);
+    try {
+      await ref.read(addressesProvider.notifier).add(newAddress);
+      widget.onSelected(newAddress.id);
+      _controller.clear();
+
+      if (mounted) {
+        setState(() => _showAddInput = false);
+      }
+
+      showAppSnackBar(
+        context,
+        message: 'Address added',
+        type: SnackType.success,
+      );
+    } catch (error, stackTrace) {
+      debugPrint('Failed to add address: $error');
+      debugPrintStack(stackTrace: stackTrace);
+
+      if (!mounted) return;
+
+      showAppSnackBar(
+        context,
+        message: 'Could not add address',
+        type: SnackType.error,
+      );
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +105,7 @@ class _AddressDropdownScheduleState extends ConsumerState<AddressDropdownSchedul
           initialValue: widget.selectedId,
           icon: Icons.home_filled,
           items: [
-            for (final address in addresses)
-              AddScheduleItem(value: address.id, label: address.label),
+            for (final address in addresses) AddScheduleItem(value: address.id, label: address.label),
             const AddScheduleItem(value: _kAddNewSentinel, label: '+ Add another address'),
           ],
           onSelected: (id) {

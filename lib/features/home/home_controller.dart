@@ -42,6 +42,12 @@ class AddressesNotifier extends StateNotifier<List<Address>> {
     await repository.deleteSchedule(scheduleId);
     await _loadFromDb();
   }
+
+  Future<void> addSchedule( String addressId, Schedule schedule, ) async {
+    final repository = ref.read(scheduleRepositoryProvider);
+    await repository.addSchedule( addressId, schedule,);
+    await _loadFromDb();
+  }
 }
 
 final addressesProvider = StateNotifierProvider<AddressesNotifier, List<Address>>(

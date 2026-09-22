@@ -135,7 +135,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   SettingsItem(
                     title: "Notifications", 
                     leading: Icon(Icons.notifications_outlined, size: context.fontSize(FontSize.extraLarge) * 1.5,), 
-                    onTap: () => context.push(AppRoutes.manageSchedules), 
+                    onTap: () => context.push(AppRoutes.notification), 
                   ),  
                 ]
               ),

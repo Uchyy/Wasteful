@@ -35,7 +35,7 @@ class AppColors extends ThemeExtension<AppColors> {
     textPrimary: Color(0xFF1B1F1B),
     textSecondary: Color(0xFF5C6459),
     textMuted: Color(0xFF8A9186),
-    accent: Color(0xFFDEB841),
+    accent: Color(0xFFFE852D),
     cardBackground: Color(0xFF14181A),
   );
 
@@ -48,7 +48,7 @@ class AppColors extends ThemeExtension<AppColors> {
     textPrimary: Color(0xFFF4F1EC),
     textSecondary: Color(0xFFB5BBAC),
     textMuted: Color(0xFF6B7268),
-    accent: Color(0xFFDEB841),
+    accent: Color(0xFFFE852D),
     cardBackground: Color(0xFF0D0F10),
   );
 

@@ -4,11 +4,7 @@ import '../theme/app_colors.dart';
 
 enum SnackType { success, error, info }
 
-void showAppSnackBar(
-  BuildContext context, {
-  required String message,
-  SnackType type = SnackType.info,
-}) {
+void showAppSnackBar(BuildContext context, {required String message,SnackType type = SnackType.info, }) {
   final colors = context.colors;
 
   final (bgColor, icon) = switch (type) {
@@ -20,17 +16,18 @@ void showAppSnackBar(
   ScaffoldMessenger.of(context).hideCurrentSnackBar();
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      backgroundColor: bgColor,
+      backgroundColor: colors.background,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.all(16),
       duration: const Duration(seconds: 3),
       content: Row(
         children: [
-          Icon(icon, color: Colors.white, size: 20),
+          Icon(icon, color: bgColor, size: 20),
           const SizedBox(width: 10),
+
           Expanded(
-            child: Text(message, style: const TextStyle(color: Colors.white, fontSize: 13)),
+            child: Text(message, style: TextStyle(color: bgColor, fontSize: 13)),
           ),
         ],
       ),

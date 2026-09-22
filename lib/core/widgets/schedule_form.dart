@@ -1,16 +1,23 @@
 // features/add_schedule/widgets/schedule_form.dart
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wasteful/core/constants/bin_types.dart';
+import 'package:wasteful/core/constants/reminder_timing.dart';
 import 'package:wasteful/core/constants/repeat_interval.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/theme/app_colors.dart';
 import 'package:wasteful/core/utils/getOrdinalDate.dart';
+import 'package:wasteful/core/widgets/app_snackbar.dart';
+import 'package:wasteful/core/widgets/timing_option.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/features/schedule/widgets/add_schedule_dropdown.dart';
 import 'package:wasteful/features/schedule/widgets/address_dropdown.dart';
 import 'package:wasteful/features/schedule/widgets/date_time.dart';
 import 'package:wasteful/features/schedule/widgets/waste_type.dart';
+import 'package:wasteful/notifications/notificaition_manager.dart';
+import 'package:wasteful/router/app_router.dart';
+import 'package:uuid/uuid.dart';
 
 
 class ScheduleForm extends StatefulWidget {
@@ -21,9 +28,8 @@ class ScheduleForm extends StatefulWidget {
 
   final String submitLabel;
   final bool isSaving;
-  /// Called with the completed schedule (id/createdAt untouched — caller
-  /// decides whether this is a create or update) and the selected address id.
-  final Future<void> Function(String addressId, Schedule schedule) onSubmit;
+  final Future<bool> Function(String addressId, Schedule schedule) onSubmit;
+  
 
   const ScheduleForm({
     super.key,
@@ -40,6 +46,7 @@ class ScheduleForm extends StatefulWidget {
 
 class _ScheduleFormState extends State<ScheduleForm> {
   late int? _selectedDay = widget.initialSchedule?.collectionWeekday;
+  late ReminderTiming _selectedReminderTiming = widget.initialSchedule?.reminderTiming ?? ReminderTiming.eveningBefore;
   late RepeatInterval? _selectedInterval = widget.initialSchedule?.repeatInterval;
   late BinType? _selectedBinType = widget.initialSchedule?.binTypes;
   late DateTime? _selectedStartDate = widget.initialSchedule?.startDate ?? DateTime.now();
@@ -50,6 +57,7 @@ class _ScheduleFormState extends State<ScheduleForm> {
   String? _binTypeError;
   String? _dayError;
   String? _intervalError;
+  bool _isSubmitting = false;
 
   bool _validate() {
     setState(() {
@@ -62,22 +70,46 @@ class _ScheduleFormState extends State<ScheduleForm> {
   }
 
   Future<void> _handleSubmit() async {
-    if (!_validate()) return;
+   if (!_validate() || _isSubmitting) return;
+
+    setState(() => _isSubmitting = true);
+    await NotificationManager.instance.ensurePermission();
 
     final now = DateTime.now();
     final schedule = Schedule(
-      id: widget.initialSchedule?.id ?? now.millisecondsSinceEpoch.toString(),
+      id: widget.initialSchedule?.id ?? const Uuid().v4(),
+      addressId: _selectedAddressId!,
       binTypes: _selectedBinType!,
       collectionWeekday: _selectedDay!,
       repeatInterval: _selectedInterval!,
       startDate: _selectedStartDate ?? now,
       notificationTime: _notificationTime,
+      reminderTiming: _selectedReminderTiming,
       isArchived: widget.initialSchedule?.isArchived ?? false,
       createdAt: widget.initialSchedule?.createdAt ?? now,
       updatedAt: now,
     );
 
-    await widget.onSubmit(_selectedAddressId!, schedule);
+    final success = await widget.onSubmit(_selectedAddressId!, schedule);
+
+    if (!mounted) return;
+    setState(() => _isSubmitting = false);
+
+    if (success) {
+      showAppSnackBar(
+        context,
+        message: widget.initialSchedule == null ? 'Schedule added' : 'Schedule updated',
+        type: SnackType.success,
+      );
+
+      context.go(AppRoutes.home);
+    } else {
+      showAppSnackBar(
+        context,
+        message: 'Something went wrong. Please try again.',
+        type: SnackType.error,
+      );
+    }
   }
 
   @override
@@ -88,6 +120,37 @@ class _ScheduleFormState extends State<ScheduleForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+          TextButton(
+            onPressed: () => context.push(AppRoutes.findCouncil),
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              alignment: Alignment.centerLeft,
+            ),
+            child: RichText(
+              text: TextSpan(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: context.fontSize(FontSize.normal),
+                      color: colors.textMuted,
+                    ),
+                children: [
+                  const TextSpan(text: "Not sure of your collection days? "),
+                  TextSpan(
+                    text: "Find your council",
+                    style: TextStyle(
+                      color: colors.accent,
+                      fontWeight: FontWeight.w600,
+                      decoration: TextDecoration.underline,
+                      decorationColor: colors.accent
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           formAddress(
             context,
             "Address",
@@ -179,20 +242,64 @@ class _ScheduleFormState extends State<ScheduleForm> {
           formAddress(
             context,
             "Reminder",
-            hintText: 'By default, reminders fire the evening before at 8:00 PM. Set a time below to override just this schedule.',
-            DateField(
-              label: _notificationTime == null
-                  ? 'Default — evening before, 8:00 PM'
-                  : 'Evening before, ${_notificationTime!.format(context)}',
-              icon: Icons.notifications_outlined,
-              onTap: () async {
-                final picked = await showTimePicker(
-                  context: context,
-                  initialTime: _notificationTime ?? const TimeOfDay(hour: 20, minute: 0),
-                );
-                if (picked != null) setState(() => _notificationTime = picked);
-              },
+            hintText: 'Choose when you want to be reminded about this collection.',
+            Row(
+              children: [
+                Expanded(
+                  child: TimingOption(
+                    title: 'Evening before',
+                    //description: 'The night before collection.',
+                    selected: _selectedReminderTiming == ReminderTiming.eveningBefore,
+                    onTap: () {
+                      setState(() {
+                        _selectedReminderTiming = ReminderTiming.eveningBefore;
+                        _notificationTime = null;
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: TimingOption(
+                    title: 'Morning of',
+                    //description: 'The morning of collection.',
+                    selected: _selectedReminderTiming == ReminderTiming.morningOf,
+                    onTap: () {
+                      setState(() {
+                        _selectedReminderTiming = ReminderTiming.morningOf;
+                        _notificationTime = null;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
+          ),
+          const SizedBox(height: 12),
+
+          DateField(
+            label: _notificationTime == null
+                ? _selectedReminderTiming == ReminderTiming.eveningBefore
+                    ? 'Default — 8:00 PM'
+                    : 'Default — 5:00 AM'
+                : _selectedReminderTiming == ReminderTiming.eveningBefore
+                    ? 'Evening before, ${_notificationTime!.format(context)}'
+                    : 'Morning of, ${_notificationTime!.format(context)}',
+            icon: Icons.access_time_outlined,
+            onTap: () async {
+              final defaultTime =_selectedReminderTiming == ReminderTiming.eveningBefore
+                      ? const TimeOfDay(hour: 20, minute: 0)
+                      : const TimeOfDay(hour: 7, minute: 0);
+
+              final picked = await showTimePicker(
+                context: context,
+                initialTime: _notificationTime ?? defaultTime,
+              );
+
+              if (picked != null) {
+                setState(() => _notificationTime = picked);
+              }
+            },
           ),
 
           Container(
@@ -205,14 +312,12 @@ class _ScheduleFormState extends State<ScheduleForm> {
                 padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
                     EdgeInsets.symmetric(vertical: context.padding(PaddingSize.small).vertical)),
               ),
-              onPressed: widget.isSaving ? null : _handleSubmit,
+              onPressed: widget.isSaving || _isSubmitting ? null : _handleSubmit,
               icon: widget.isSaving
-                  ? const SizedBox(
-                      height: 18,
-                      width: 18,
-                      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                    )
-                  : const Icon(Icons.add_card_outlined, color: Colors.white),
+              ? const SizedBox( height: 18, width: 18,
+                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                )
+              : const Icon(Icons.add_card_outlined, color: Colors.white),
               label: Text(
                 widget.isSaving ? "Saving..." : widget.submitLabel,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white),
@@ -232,15 +337,17 @@ Widget formAddress(BuildContext context, String title, Widget widget, {String hi
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         Text(title, style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 5),
+
         if (hintText.isNotEmpty) ...[
           Text(
             hintText,
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: context.colors.accent.withAlpha(100),
-                  fontSize: context.fontSize(FontSize.small),
-                ),
+              color: context.colors.textPrimary,
+              fontSize: context.fontSize(FontSize.small),
+            ),
           ),
         ],
         const SizedBox(height: 10),

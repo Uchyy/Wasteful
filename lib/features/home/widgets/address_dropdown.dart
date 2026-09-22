@@ -20,7 +20,7 @@ class AddressDropdown extends ConsumerWidget {
     final colors = context.colors;
     final addresses = ref.watch(addressesProvider);
     final selectedId = ref.watch(selectedAddressIdProvider);
-    final showAll = addresses.length > 2;
+    final showAll = addresses.length > 1;
 
     // "All" is only a real selection when it's actually offered; otherwise
     // fall back sensibly rather than pointing at a sentinel with no match.

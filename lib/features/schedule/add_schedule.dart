@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/widgets/app_bar.dart';
-import 'package:wasteful/core/widgets/app_snackbar.dart';
 import 'package:wasteful/core/widgets/schedule_form.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/data/repository/schdeule_provider.dart' hide addressesProvider;
@@ -21,29 +20,33 @@ class AddScheduleScreen extends ConsumerStatefulWidget {
 class _AddScheduleScreenState extends ConsumerState<AddScheduleScreen> {
   bool _isSaving = false;
 
-  Future<void> _handleSubmit(String addressId, Schedule schedule) async {
+  Future<bool> _handleSubmit( String addressId, Schedule schedule,) async {
     setState(() => _isSaving = true);
 
     try {
-      final repository = ref.read(scheduleRepositoryProvider);
-      await repository.addSchedule(addressId, schedule);
-      ref.invalidate(addressesProvider);
+      await ref.read(addressesProvider.notifier).addSchedule(addressId, schedule);
+
       if (mounted) {
-        context.go(AppRoutes.home); // navigate to Home directly, not pop
+        context.go(AppRoutes.home);
       }
-    } catch (e) {
-      if (mounted) {
-        showAppSnackBar(context, message: 'Failed to save schedule: $e', type: SnackType.error);
-      }
+
+      return true;
+    } catch (e, stackTrace) {
+      debugPrint('Failed to add schedule: $e');
+      debugPrintStack(stackTrace: stackTrace);
+
+      return false;
     } finally {
-      if (mounted) setState(() => _isSaving = false);
+      if (mounted) {
+        setState(() => _isSaving = false);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "What are we tracking", showBack: false),
+      appBar: CustomAppBar(title: "What are we tracking", showBack: true),
       body: Padding(
         padding: context.padding(PaddingSize.medium),
         child: ScheduleForm(

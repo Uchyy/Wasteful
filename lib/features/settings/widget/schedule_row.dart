@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:wasteful/core/constants/bin_types.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/theme/app_colors.dart';
+import 'package:wasteful/core/widgets/app_confirm_dialog.dart';
 import 'package:wasteful/data/model/schedule.dart';
+import 'package:wasteful/features/home/home_controller.dart';
 import 'package:wasteful/router/app_router.dart';
 
 class ScheduleRow extends ConsumerWidget {
@@ -29,26 +31,15 @@ class ScheduleRow extends ConsumerWidget {
         ),
         child: Icon(Icons.delete_outline, color: colors.background),
       ),
-      confirmDismiss: (direction) async {
-        return await showDialog<bool>(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Delete schedule?'),
-            content: Text('This will remove the ${schedule.binTypes.name} schedule.'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: const Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: Text('Delete', style: TextStyle(color: Colors.redAccent)),
-              ),
-            ],
-          ),
-        ) ??
-        false;
-      },
+      confirmDismiss: (direction) => AppConfirmDialog.show(
+        context,
+        title: 'Delete schedule?',
+        message: 'This will remove the ${schedule.binTypes.label} schedule.',
+        confirmLabel: 'Delete',
+        type: ConfirmDialogType.danger,
+        icon: Icons.delete_outline,
+        onConfirm: () => ref.read(addressesProvider.notifier).removeScheduleFromAddress(addressId, schedule.id),
+      ),
       onDismissed: (direction) {},
       child: ListTile(
         onTap: () => context.push(

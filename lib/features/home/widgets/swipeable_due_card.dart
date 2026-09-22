@@ -1,6 +1,7 @@
 // features/home/widgets/swipeable_due_cards.dart
 import 'package:flutter/material.dart';
 import 'package:wasteful/core/constants/bin_types.dart';
+import 'package:wasteful/core/constants/reminder_timing.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/data/model/schedule.dart';
@@ -131,7 +132,7 @@ class _DueCard extends StatelessWidget {
                 ),
 
                 Text(
-                  'Tomorrow',
+                  entry.schedule.reminderTiming == ReminderTiming.eveningBefore  ? 'Tomorrow' : 'Today',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.black,  fontSize: context.fontSize(FontSize.extraLarge) * 1.2, fontWeight: FontWeight.w900)
                 ),
 

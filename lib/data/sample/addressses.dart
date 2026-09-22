@@ -27,6 +27,7 @@ class SampleAddresses {
           schedules: [
             Schedule(
               id: 'sch-1',
+              addressId: 'adr-1',
               binTypes:BinType.recycling,
               collectionWeekday: DateTime.tuesday,
               repeatInterval: RepeatInterval.everyTwoWeeks,
@@ -38,6 +39,7 @@ class SampleAddresses {
             ),
             Schedule(
               id: 'sch-2',
+              addressId: 'adr-1',
               binTypes: BinType.garden,
               collectionWeekday: DateTime.friday,
               repeatInterval: RepeatInterval.everyThreeWeeks,
@@ -49,6 +51,7 @@ class SampleAddresses {
             ),
             Schedule(
               id: 'sch-3',
+              addressId: 'adr-1',
               binTypes: BinType.general,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.weekly,                      // weekly, so it always lands correctly
@@ -73,6 +76,7 @@ class SampleAddresses {
           schedules: [
             Schedule(
               id: 'sch-5',
+              addressId: 'adr-2',
               binTypes: BinType.food,
               collectionWeekday: DateTime.friday,
               repeatInterval: RepeatInterval.weekly,
@@ -85,6 +89,7 @@ class SampleAddresses {
 
             Schedule(
               id: 'sch-6',
+              addressId: 'adr-2',
               binTypes: BinType.recycling,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.weekly,                      // weekly, so it always lands correctly
@@ -97,6 +102,7 @@ class SampleAddresses {
 
              Schedule(
               id: 'sch-6',
+              addressId: 'adr-2',
               binTypes: BinType.general,
               collectionWeekday: tomorrow.weekday, // matches tomorrow exactly
               repeatInterval: RepeatInterval.everyTwoWeeks,                      // weekly, so it always lands correctly

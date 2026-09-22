@@ -1,4 +1,6 @@
 // data/repositories/schedule_repository.dart
+import 'dart:core';
+
 import 'package:sqflite/sqflite.dart';
 import 'package:wasteful/data/db/app_db.dart';
 import 'package:wasteful/data/model/address.dart';
@@ -9,7 +11,15 @@ class ScheduleRepository {
 
   Future<void> addAddress(Address address) async {
     final db = await _db;
-    await db.insert('addresses', address.toMap());
+
+    try {
+      await db.insert('addresses', address.toMap());
+    } on DatabaseException catch (e) {
+      if (e.isUniqueConstraintError()) {
+        throw Exception('An address with that name already exists');
+      }
+      rethrow;
+    }
   }
 
   Future<void> updateAddress(Address address) async {
@@ -36,14 +46,12 @@ class ScheduleRepository {
 
   Future<void> addSchedule(String addressId, Schedule schedule) async {
     final db = await _db;
-    final map = schedule.toMap()..['address_id'] = addressId;
-    await db.insert('schedules', map); // no transaction needed — single insert
+    await db.insert('schedules', schedule.toMap()); // no transaction needed — single insert
   }
 
   Future<void> updateSchedule(String addressId, Schedule schedule) async {
     final db = await _db;
-    final map = schedule.toMap()..['address_id'] = addressId;
-    await db.update('schedules', map, where: 'id = ?', whereArgs: [schedule.id]);
+    await db.update('schedules', schedule.toMap(), where: 'id = ?', whereArgs: [schedule.id]);
   }
 
   Future<void> deleteSchedule(String id) async {
@@ -70,5 +78,54 @@ class ScheduleRepository {
     );
 
     return scheduleMaps.map((map) => Schedule.fromMap(map)).toList();
+  }
+
+  Future<String> getAddressLabel(String addressId) async {
+    final db = await _db;
+    final results = await db.query(
+      'addresses',
+      columns: ['label'],
+      where: 'id = ?',
+      whereArgs: [addressId],
+      limit: 1,
+    );
+
+    if (results.isEmpty) {
+      return '';
+    }
+
+    final label = results.first['label'];
+    return label is String ? label : '';
+  }
+
+  Future<Schedule?> getSchedule(String id) async {
+    final db = await _db;
+
+    final results = await db.query(
+      'schedules',
+      where: 'id = ?',
+      whereArgs: [id],
+      limit: 1,
+    );
+
+    if (results.isEmpty) {
+      return null;
+    }
+
+    return Schedule.fromMap(results.first);
+  }
+
+  Future<List<Schedule>> getActiveSchedules() async {
+    final db = await _db;
+
+    final scheduleMaps = await db.query(
+      'schedules',
+      where: 'is_archived = ?',
+      whereArgs: [0],
+    );
+
+    return scheduleMaps
+        .map((map) => Schedule.fromMap(map))
+        .toList();
   }
 }
