@@ -15,7 +15,6 @@ import 'package:wasteful/features/schedule/widgets/add_schedule_dropdown.dart';
 import 'package:wasteful/features/schedule/widgets/address_dropdown.dart';
 import 'package:wasteful/features/schedule/widgets/date_time.dart';
 import 'package:wasteful/features/schedule/widgets/waste_type.dart';
-import 'package:wasteful/notifications/notificaition_manager.dart';
 import 'package:wasteful/router/app_router.dart';
 import 'package:uuid/uuid.dart';
 
@@ -73,7 +72,6 @@ class _ScheduleFormState extends State<ScheduleForm> {
    if (!_validate() || _isSubmitting) return;
 
     setState(() => _isSubmitting = true);
-    await NotificationManager.instance.ensurePermission();
 
     final now = DateTime.now();
     final schedule = Schedule(

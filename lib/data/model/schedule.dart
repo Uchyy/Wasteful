@@ -135,13 +135,21 @@ extension ScheduleX on Schedule {
     return _nextCollectionDate(from ?? DateTime.now());
   }
 
+  String get notificationKey => '${addressId}_$id';
+
+  int get notificationId {
+    var hash = 0;
+    for (final codeUnit in notificationKey.codeUnits) {
+      hash = ((hash << 5) - hash + codeUnit) & 0x7fffffff;
+    }
+
+    return hash;
+  }
+
   /// Returns the next [count] collection dates.
   ///
   /// Used by the notification scheduler to prepare future reminders.
-  List<DateTime> upcomingCollectionDates({
-    DateTime? from,
-    int count = 8,
-  }) {
+  List<DateTime> upcomingCollectionDates({ DateTime? from, int count = 8, }) {
     if (count <= 0) return [];
 
     final dates = <DateTime>[];
@@ -177,80 +185,80 @@ extension ScheduleX on Schedule {
   }
 
   bool _isCollectionToday(DateTime date) {
-  final today = DateTime(
-    date.year,
-    date.month,
-    date.day,
-  );
+    final today = DateTime(
+      date.year,
+      date.month,
+      date.day,
+    );
 
-  if (repeatInterval == RepeatInterval.monthly) {
-    final occurrence = ((startDate.day - 1) ~/ 7) + 1;
+    if (repeatInterval == RepeatInterval.monthly) {
+      final occurrence = ((startDate.day - 1) ~/ 7) + 1;
 
-    DateTime findNthWeekday(
-      DateTime monthStart,
-      int weekday,
-      int n,
-    ) {
-      var candidate = monthStart;
+      DateTime findNthWeekday(
+        DateTime monthStart,
+        int weekday,
+        int n,
+      ) {
+        var candidate = monthStart;
 
-      while (candidate.weekday != weekday) {
-        candidate = _addDays(candidate, 1);
+        while (candidate.weekday != weekday) {
+          candidate = _addDays(candidate, 1);
+        }
+
+        return _addDays(candidate, 7 * (n - 1));
       }
 
-      return _addDays(candidate, 7 * (n - 1));
+      final candidate = findNthWeekday(
+        DateTime(today.year, today.month, 1),
+        collectionWeekday,
+        occurrence,
+      );
+
+      return _sameDate(candidate, today);
     }
 
-    final candidate = findNthWeekday(
-      DateTime(today.year, today.month, 1),
-      collectionWeekday,
-      occurrence,
+    final weeks = switch (repeatInterval) {
+      RepeatInterval.weekly => 1,
+      RepeatInterval.everyTwoWeeks => 2,
+      RepeatInterval.everyThreeWeeks => 3,
+      RepeatInterval.monthly => throw StateError(
+          'Monthly interval should already be handled.',
+        ),
+    };
+
+    final cycleLength = weeks * 7;
+
+    final start = DateTime(
+      startDate.year,
+      startDate.month,
+      startDate.day,
     );
+
+    final daysSinceStart = today.difference(start).inDays;
+
+    if (daysSinceStart < 0) {
+      return false;
+    }
+
+    final daysIntoCycle = daysSinceStart % cycleLength;
+
+    var candidate = _addDays(
+      today,
+      -daysIntoCycle,
+    );
+
+    while (candidate.weekday != collectionWeekday) {
+      candidate = _addDays(candidate, 1);
+    }
 
     return _sameDate(candidate, today);
   }
 
-  final weeks = switch (repeatInterval) {
-    RepeatInterval.weekly => 1,
-    RepeatInterval.everyTwoWeeks => 2,
-    RepeatInterval.everyThreeWeeks => 3,
-    RepeatInterval.monthly => throw StateError(
-        'Monthly interval should already be handled.',
-      ),
-  };
-
-  final cycleLength = weeks * 7;
-
-  final start = DateTime(
-    startDate.year,
-    startDate.month,
-    startDate.day,
-  );
-
-  final daysSinceStart = today.difference(start).inDays;
-
-  if (daysSinceStart < 0) {
-    return false;
+  bool _sameDate(DateTime a, DateTime b) {
+    return a.year == b.year &&
+        a.month == b.month &&
+        a.day == b.day;
   }
-
-  final daysIntoCycle = daysSinceStart % cycleLength;
-
-  var candidate = _addDays(
-    today,
-    -daysIntoCycle,
-  );
-
-  while (candidate.weekday != collectionWeekday) {
-    candidate = _addDays(candidate, 1);
-  }
-
-  return _sameDate(candidate, today);
-}
-
-bool _sameDate(DateTime a, DateTime b) {
-  return a.year == b.year &&
-      a.month == b.month &&
-      a.day == b.day;
-}
 
   DateTime _nextCollectionDate(DateTime from) {
     final today = DateTime(from.year,from.month,from.day,);
@@ -367,5 +375,7 @@ bool _sameDate(DateTime a, DateTime b) {
   bool get isCollectionToday {
     return _isCollectionToday(DateTime.now());
   }
+
+  
 }
 

@@ -5,6 +5,7 @@ import 'package:wasteful/core/constants/reminder_timing.dart';
 import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/data/model/schedule.dart';
+import 'package:wasteful/data/repository/schedule_repository.dart';
 import '../../../core/theme/app_colors.dart';
 
 class SwipeableDueCards extends StatefulWidget {
@@ -46,6 +47,8 @@ class _SwipeableDueCardsState extends State<SwipeableDueCards> {
         child: _DueCard(entry: widget.entries.first),
       );
     }
+
+
 
     return Column(
       children: [
@@ -91,6 +94,8 @@ class _DueCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final primaryBinType = entry.schedule.binTypes;
+    final repo = ScheduleRepository();
+
 
     return Container(
       width: double.infinity,
@@ -120,15 +125,20 @@ class _DueCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               //mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'Next collection'.toUpperCase(), 
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    letterSpacing: 1.5, 
-                    color: Colors.black, 
-                    fontSize: context.fontSize(FontSize.normal),
-                    fontWeight: FontWeight.w800
-                  ),
-                  
+                
+                FutureBuilder<String>(
+                  future: repo.getAddressLabel(entry.schedule.addressId),
+                  builder: (context, snapshot) {
+                    return Text(
+                      snapshot.data ?? '',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        letterSpacing: 1.5,
+                        color: Colors.black,
+                        fontSize: context.fontSize(FontSize.normal),
+                        fontWeight: FontWeight.w800,
+                      ),
+                    );
+                  },
                 ),
 
                 Text(

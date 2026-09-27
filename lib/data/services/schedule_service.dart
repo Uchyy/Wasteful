@@ -1,93 +1,51 @@
+import 'package:wasteful/data/model/notification_schedule.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/data/repository/schedule_repository.dart';
-import 'package:wasteful/notifications/schedule_notification_scheduler.dart';
+import 'package:wasteful/notifications/notification_service.dart';
 
 class ScheduleService {
-  ScheduleService({
-    required this.repository,
-    required this.notificationScheduler,
-  });
+  ScheduleService({ required this.repository, required this.notificationService, });
 
   final ScheduleRepository repository;
-  final ScheduleNotificationScheduler notificationScheduler;
+  final NotificationService notificationService;
 
-  Future<void> addSchedule( String addressId, Schedule schedule, ) async {
-    await repository.addSchedule(
-      addressId,
-      schedule,
-    );
-
-    await _tryNotificationOperation(
-      () => notificationScheduler.scheduleReminder(
-        schedule,
-      ),
-    );
+  Future<void> addSchedule( String addressId, Schedule schedule,) async {
+    await repository.addSchedule( addressId, schedule, );
+    await _scheduleNotification(schedule);
   }
 
-  Future<void> updateSchedule( String addressId,Schedule schedule, ) async {
+  Future<void> updateSchedule( String addressId, Schedule schedule, ) async {
     final oldSchedule = await repository.getSchedule(schedule.id);
+    if (oldSchedule != null) {
+      await notificationService.cancel(
+        oldSchedule.notificationId,
+      );
+    }
 
     await repository.updateSchedule( addressId, schedule,);
-
-    await _tryNotificationOperation( () async {
-        if (oldSchedule != null) {
-          await notificationScheduler.cancelReminder(
-            oldSchedule,
-          );
-        }
-
-        await notificationScheduler.scheduleReminder(
-          schedule,
-        );
-      },
-    );
+    await _scheduleNotification(schedule);
   }
-  
-  Future<void> deleteSchedule(String id) async {
-    final schedule =  await repository.getSchedule(id);
 
+  Future<void> deleteSchedule(String id) async {
+    final schedule = await repository.getSchedule(id);
     await repository.deleteSchedule(id);
 
-    if (schedule == null) {
-      return;
-    }
-
-    await _tryNotificationOperation(
-      () => notificationScheduler.cancelReminder(
-        schedule,
-      ),
-    );
-  }
-
-  Future<void> archiveSchedule(String id) async {
-    final schedule =  await repository.getSchedule(id);
-
-    await repository.archiveSchedule(id);
-
-    if (schedule == null) {
-      return;
-    }
-
-    await _tryNotificationOperation(
-      () => notificationScheduler.cancelReminder(
-        schedule,
-      ),
-    );
-  }
-
-  Future<void> _tryNotificationOperation( Future<void> Function() operation, ) async {
-    try {
-      await operation();
-    } catch (error, stackTrace) {
-      _logNotificationError(
-        error,
-        stackTrace,
+    if (schedule != null) {
+      await notificationService.cancel(
+        schedule.notificationId,
       );
     }
   }
 
-  void _logNotificationError( Object error,StackTrace stackTrace, ) {
-    print('Notification error: $error');
-    print(stackTrace);
+  Future<void> _scheduleNotification(Schedule schedule) async {
+    final notification = NotificationSchedule(schedule);
+
+    await notificationService.schedule(
+      id: notification.id,
+      title: notification.title,
+      body: notification.body,
+      dateTime: notification.dateTime,
+      payload: notification.payload,
+    );
   }
 }

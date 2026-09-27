@@ -32,29 +32,17 @@ class AddressesNotifier extends StateNotifier<List<Address>> {
     await _loadFromDb();
   }
 
- Future<void> updateSchedule(
-  String addressId,
-  Schedule schedule,
-) async {
-  debugPrint('=== ADDRESSES NOTIFIER: UPDATE SCHEDULE ===');
-  debugPrint('Address ID: $addressId');
-  debugPrint('Schedule ID: ${schedule.id}');
-  debugPrint('Notification time: ${schedule.notificationTime}');
-  debugPrint('Reminder timing: ${schedule.reminderTiming}');
+  Future<void> updateSchedule( String addressId, Schedule schedule,) async {
+    debugPrint('=== ADDRESSES NOTIFIER: UPDATE SCHEDULE ===');
+    debugPrint('Address ID: $addressId');
+    debugPrint('Schedule ID: ${schedule.id}');
+    debugPrint('Notification time: ${schedule.notificationTime}');
+    debugPrint('Reminder timing: ${schedule.reminderTiming}');
 
-  final service = ref.read(scheduleServiceProvider);
-
-  await service.updateSchedule(
-    addressId,
-    schedule,
-  );
-
-  debugPrint('=== ADDRESSES NOTIFIER: UPDATE COMPLETE ===');
-
-  await _loadFromDb();
-
-  debugPrint('=== ADDRESSES NOTIFIER: STATE RELOADED ===');
-}
+    final service = ref.read(scheduleServiceProvider);
+    await service.updateSchedule( addressId, schedule, );
+    await _loadFromDb();
+  }
 
   Future<void> removeScheduleFromAddress(String addressId, String scheduleId) async {
     final service = ref.read(scheduleServiceProvider);

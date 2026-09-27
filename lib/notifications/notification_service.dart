@@ -21,7 +21,11 @@ class NotificationService {
 
     tz.setLocalLocation( tz.getLocation(timezone.identifier), );
     const androidSettings = AndroidInitializationSettings(  '@mipmap/ic_launcher',);
-    const iosSettings = DarwinInitializationSettings();
+    const iosSettings = DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
 
     const settings = InitializationSettings(
       android: androidSettings,
@@ -141,6 +145,8 @@ class NotificationService {
       ),
     );
   }
+
+  
 
   Future<void> scheduleDebugNotification(DateTime dateTime) async {
     await _plugin.zonedSchedule(

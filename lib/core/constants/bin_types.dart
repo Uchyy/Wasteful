@@ -55,6 +55,14 @@ extension BinTypeX on BinType {
     }
   }
 
+  String get notificationIcon => switch (this) {
+    BinType.general => '🗑️',
+    BinType.recycling => '♻️',
+    BinType.garden => '🍃',
+    BinType.food => '🥬',
+    BinType.other => '❓',
+  };
+
   Icon getfallBackIcon ({double size = 24}) {
     switch (this) {
       case BinType.general:
