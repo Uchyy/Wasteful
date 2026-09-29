@@ -1,6 +1,4 @@
-Yep — I'd remove the entire **Testing** section. Here's the cleaned-up README:
 
-````markdown
 # Wasteful 🗑️
 
 Wasteful is a simple bin collection reminder app built with Flutter.
@@ -58,7 +56,6 @@ lib/
 │   ├── settings/
 │   └── ...
 └── main.dart
-````
 
 ## Notifications
 
