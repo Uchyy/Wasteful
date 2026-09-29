@@ -148,6 +148,7 @@ class _FindMyCouncilScreenState extends ConsumerState<FindMyCouncilScreen> {
                             children: [
                               Text(_selectedCouncil!.council, style: Theme.of(context).textTheme.titleMedium),
                               const SizedBox(height: 2),
+                              
                               Text(
                                 _selectedCouncil!.country,
                                 style: TextStyle(fontSize: 12, color: colors.textMuted),

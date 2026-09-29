@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/data/model/schedule.dart';
 import 'package:wasteful/data/repository/schedule_provider.dart';
+import 'package:wasteful/data/sample/addressses.dart';
 
 class AddressesNotifier extends StateNotifier<List<Address>> {
   final Ref ref;
@@ -14,6 +15,11 @@ class AddressesNotifier extends StateNotifier<List<Address>> {
   }
 
   Future<void> _loadFromDb() async {
+    if (kIsWeb) {
+      state = SampleAddresses.multiple();
+      return;
+    }
+    
     final repository = ref.read(scheduleRepositoryProvider);
     state = await repository.getAddresses();
   }

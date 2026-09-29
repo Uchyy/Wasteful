@@ -20,8 +20,10 @@ class AppDatabase {
 
     return openDatabase(
       path,
-      version: 3, // bump this number whenever the schema below changes
-      onConfigure: (db) async => db.execute('PRAGMA foreign_keys = ON'),
+      version: 4,
+      onConfigure: (db) async {
+        await db.execute('PRAGMA foreign_keys = ON');
+      },
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE addresses (
@@ -43,6 +45,7 @@ class AppDatabase {
             notification_time TEXT,
             is_archived INTEGER NOT NULL DEFAULT 0,
             reminder_timing TEXT NOT NULL DEFAULT 'eveningBefore',
+            last_taken_out TEXT,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
             FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
@@ -140,6 +143,13 @@ class AppDatabase {
           await db.execute(
             'ALTER TABLE schedules_new RENAME TO schedules',
           );
+        }
+
+        if (oldVersion < 4) {
+          await db.execute('''
+            ALTER TABLE schedules
+            ADD COLUMN last_taken_out TEXT
+          ''');
         }
       },
     );

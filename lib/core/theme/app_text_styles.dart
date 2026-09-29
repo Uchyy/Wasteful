@@ -37,6 +37,11 @@ class AppTextStyles {
         letterSpacing: 0.6,
         color: secondary,
       ),
+      displayLarge: GoogleFonts.deliciousHandrawn(
+        fontSize: 40,
+        fontWeight: FontWeight.w500,
+        color: primary,
+      ),
     );
   }
 }

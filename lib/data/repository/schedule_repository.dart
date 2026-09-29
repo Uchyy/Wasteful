@@ -1,10 +1,12 @@
 // data/repositories/schedule_repository.dart
 import 'dart:core';
 
+import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:wasteful/data/db/app_db.dart';
 import 'package:wasteful/data/model/address.dart';
 import 'package:wasteful/data/model/schedule.dart';
+import 'package:wasteful/data/sample/addressses.dart';
 
 class ScheduleRepository {
   Future<Database> get _db async => AppDatabase.instance.database;
@@ -31,6 +33,7 @@ class ScheduleRepository {
     final db = await _db;
     await db.delete('addresses', where: 'id = ?', whereArgs: [id]);
   }
+
 
   Future<List<Address>> getAddresses() async {
     final db = await _db;
@@ -81,6 +84,13 @@ class ScheduleRepository {
   }
 
   Future<String> getAddressLabel(String addressId) async {
+
+    if (kIsWeb) {
+      final addresses = SampleAddresses.multiple();
+      final address = addresses.firstWhere( (address) => address.id == addressId,);
+      return address.label;
+    }
+
     final db = await _db;
     final results = await db.query(
       'addresses',

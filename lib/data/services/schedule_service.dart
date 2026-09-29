@@ -42,10 +42,11 @@ class ScheduleService {
 
     await notificationService.schedule(
       id: notification.id,
-      title: notification.title,
+      title: await notification.title,
       body: notification.body,
       dateTime: notification.dateTime,
       payload: notification.payload,
+      groupKey: notification.groupKey,
     );
   }
 }

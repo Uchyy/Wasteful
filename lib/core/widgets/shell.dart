@@ -1,11 +1,10 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/features/schedule/add_schedule.dart';
 import 'package:wasteful/features/settings/settings.dart';
 import '../theme/app_colors.dart';
 import '../../features/home/home_screen.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
@@ -15,19 +14,14 @@ class MainShell extends StatefulWidget {
 }
 
 class _MainShellState extends State<MainShell> {
+   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int _index = 0;
 
   static const _screens = [
     HomeScreen(),
-    SettingsScreen(),
     AddScheduleScreen(),
+    SettingsScreen(),
   ];
-
-  void _onAddPressed() {
-    setState(() {
-      _index = 2; // Navigate to the AddScheduleScreen
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,31 +29,32 @@ class _MainShellState extends State<MainShell> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(
-          bottom: context.padding(PaddingSize.large).bottom
+          bottom: context.padding(PaddingSize.medium).bottom,
+          top:  context.padding(PaddingSize.small).top
         ),
-        child:  IndexedStack(index: _index, children: _screens),
+        child: _screens[_index],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: colors.accent,
-        onPressed: _onAddPressed,
-        shape: const CircleBorder(),
-        child: Icon(Icons.add, color: colors.textPrimary, size: context.fontSize(FontSize.extraLarge) * 1.2),
-      ),
-
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        iconSize: context.fontSize(FontSize.extraLarge) ,
-        icons: const [Icons.home_outlined, Icons.settings_outlined],
-        activeIndex: _index,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.smoothEdge,
-        leftCornerRadius: 20,
-        rightCornerRadius: 20,
-        backgroundColor: colors.surface,
-        activeColor: colors.accent,
-        inactiveColor: colors.textMuted,
-        onTap: (index) => setState(() => _index = index),
-      ),
+       bottomNavigationBar: CurvedNavigationBar(
+          key: _bottomNavigationKey,
+          index: 0,
+          items: <Widget>[
+            Icon(Icons.home_outlined, size: 30, color: colors.accent,),
+            Icon(Icons.add_outlined, size: 30, color: colors.accent,),
+            Icon(Icons.settings_outlined, size: 30, color: colors.accent,),
+          ],
+          color: colors.inverseBackground,
+          buttonBackgroundColor: colors.background.withAlpha(100),
+          backgroundColor: colors.background,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 600),
+          onTap: (index) {
+            setState(() {
+              _index = index;
+            });
+          },
+          letIndexChange: (index) => true,
+        ),
+      
     );
   }
 }

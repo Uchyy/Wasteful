@@ -15,6 +15,7 @@ class Schedule {
   final DateTime createdAt;
   final DateTime updatedAt;
   final ReminderTiming reminderTiming;
+  final DateTime? lastTakenOut;
 
   Schedule({
     required this.id,
@@ -28,6 +29,7 @@ class Schedule {
     this.reminderTiming = ReminderTiming.eveningBefore,
     required this.createdAt,
     required this.updatedAt,
+    this.lastTakenOut
   });
 
   Schedule copyWith({
@@ -42,6 +44,7 @@ class Schedule {
     bool? isArchived,
     DateTime? createdAt,
     DateTime? updatedAt,
+    DateTime? lastTakenOut,
   }) {
     return Schedule(
       id: id ?? this.id,
@@ -55,6 +58,7 @@ class Schedule {
       isArchived: isArchived ?? this.isArchived,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      lastTakenOut: lastTakenOut ?? this.lastTakenOut
     );
   }
 
@@ -73,6 +77,7 @@ class Schedule {
       'is_archived': isArchived ? 1 : 0,
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt.toIso8601String(),
+      'last_taken_out': lastTakenOut?.toIso8601String() ,
     };
   }
 
@@ -98,6 +103,9 @@ class Schedule {
       isArchived: (map['is_archived'] as int) == 1,
       createdAt: DateTime.parse(map['created_at'] as String),
       updatedAt: DateTime.parse(map['updated_at'] as String),
+      lastTakenOut: map['last_taken_out'] != null
+        ? DateTime.parse(map['last_taken_out'] as String)
+        : null,
     );
   }
 
@@ -118,6 +126,7 @@ class Schedule {
         'startDate: ${startDate.toIso8601String()}, '
         'notificationTime: ${notificationTime?.format24Hour() ?? "default"}, '
         'isArchived: $isArchived'
+        'last_taken_out: ${lastTakenOut?.toIso8601String()}'
         ')';
   }
 }
@@ -179,9 +188,7 @@ extension ScheduleX on Schedule {
     final tomorrow = _addDays(now, 1);
     final next = nextCollectionDate();
 
-    return next.year == tomorrow.year &&
-        next.month == tomorrow.month &&
-        next.day == tomorrow.day;
+    return next.year == tomorrow.year && next.month == tomorrow.month && next.day == tomorrow.day;
   }
 
   bool _isCollectionToday(DateTime date) {

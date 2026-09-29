@@ -8,11 +8,12 @@ import 'package:wasteful/core/extensions/responsive_font.dart';
 import 'package:wasteful/core/extensions/responsive_padding.dart';
 import 'package:wasteful/core/utils/getOrdinalDate.dart';
 import 'package:wasteful/core/widgets/app_bar.dart';
+import 'package:wasteful/core/widgets/letter_avatar.dart';
 import 'package:wasteful/core/widgets/section_wrapper.dart';
 import 'package:wasteful/data/model/schedule.dart';
+import 'package:wasteful/data/repository/schedule_provider.dart';
 import 'package:wasteful/features/home/widgets/address_dropdown.dart';
 import 'package:wasteful/features/home/widgets/swipeable_due_card.dart';
-import 'package:wasteful/notifications/notification_service.dart';
 import 'package:wasteful/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import 'home_controller.dart';
@@ -38,7 +39,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     final allSchedules = relevantAddresses.expand((a) => a.schedules).where((s) => !s.isArchived).toList();
 
-    final dueTonight = allSchedules.where((s) => s.isDueTonight).toList();
+    final dueTonight = allSchedules.where((s) {
+      if (!s.isDueTonight) return false;
+      if (s.lastTakenOut == null) return true;
+
+      final today = DateTime.now();
+
+      return s.lastTakenOut!.year != today.year || s.lastTakenOut!.month != today.month ||s.lastTakenOut!.day != today.day;
+    }).toList();
     final upcoming = allSchedules.where((s) => !s.isDueTonight).toList()..sort((a, b) => a.nextCollectionDate().compareTo(b.nextCollectionDate()));
 
     const previewLimit = 3;
@@ -89,17 +97,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: const Text('+ Add a Schedule')
                 ),
 
-                ElevatedButton(
-                  onPressed: () async {
-                    await NotificationService.instance.debugPending();
-                    await NotificationService.instance.showTestNotification();
-                    await NotificationService.instance.debugExactAlarmPermission();
-                    await NotificationService.instance.scheduleDebugNotification(
-                      DateTime.now().add(const Duration(minutes: 2)),
-                    );
-                  },
-                  child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
-                )
+              
               ],
             ),
           ),
@@ -168,28 +166,74 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     : null,
                 children: [
                   for (int i = 0; i < visibleUpcoming.length; i++) ...[
-                    ListTile(
-                      contentPadding: context.padding(PaddingSize.small) * 0.5,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-                      leading: visibleUpcoming[i].binTypes == BinType.general
-                          ? visibleUpcoming[i].binTypes.getfallBackIcon(size: context.fontSize(FontSize.extraLarge) * 2)
-                          : visibleUpcoming[i].binTypes.icon(size: context.fontSize(FontSize.extraLarge) * 2),
-                      title: Text(
-                        getOrdinalDate(visibleUpcoming[i].nextCollectionDate()),
-                        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                              color: colors.textPrimary,
-                              fontSize: context.fontSize(FontSize.normal),
-                            ),
+
+                    InkWell(
+                      onTap: () => context.push(
+                      AppRoutes.editSchedule,
+                      extra: {'addressId': visibleUpcoming[i].addressId, 'schedule': visibleUpcoming[i]},
                       ),
-                      subtitle: Text(
-                        visibleUpcoming[i].binTypes.label,
-                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                              color: colors.textSecondary,
-                              letterSpacing: 1.5,
-                              fontSize: context.fontSize(FontSize.normal) * 0.5,
-                            ),
+                      child: ListTile(
+                        contentPadding: context.padding(PaddingSize.small) * 0.5,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+                        leading: FutureBuilder<String>(
+                          future: ref.read(scheduleRepositoryProvider).getAddressLabel(  visibleUpcoming[i].addressId, ),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const LetterAvatar(letter: '?');
+                            }
+
+                            return LetterAvatar( letter: snapshot.data!,);
+                          },
+                        ),
+      
+                        title: Text(
+                          getOrdinalDate(visibleUpcoming[i].nextCollectionDate()),
+                          style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                            color: colors.textPrimary,
+                            fontSize: context.fontSize(FontSize.normal),
+                          ),
+                        ),
+                        subtitle: FutureBuilder<String>(
+                          future: ref.read(scheduleRepositoryProvider).getAddressLabel(visibleUpcoming[i].addressId),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const SizedBox.shrink();
+                            }
+
+                            return Row(
+                              children: [
+                                Expanded(
+                                  child: Text.rich(
+                                    maxLines: 2,
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: snapshot.data,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: context.fontSize(FontSize.small),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                            '  ${visibleUpcoming[i].binTypes.notificationIcon}  ${visibleUpcoming[i].binTypes.label}',
+                                        ),
+                                      ],
+                                    ),
+                                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                      color: colors.textSecondary,
+                                      letterSpacing: 1.5,
+                                      fontSize: context.fontSize(FontSize.small),
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ],
               )
@@ -205,18 +249,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ), 
                 ]
               ),
-
-              ElevatedButton(
-                onPressed: () async {
-                  await NotificationService.instance.debugPending();
-                  await NotificationService.instance.showTestNotification();
-                  await NotificationService.instance.debugExactAlarmPermission();
-                  await NotificationService.instance.scheduleDebugNotification(
-                    DateTime.now().add(const Duration(minutes: 2)),
-                  );
-                },
-                child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
-              )
 
             ],
           ),
@@ -240,5 +272,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   },
   child: Text('Check pending notifications', style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colors.accent),),
 )
+
+ElevatedButton(
+  onPressed: () async {
+    await NotificationService.instance.showGroupSummaryTest();
+  },
+  child: const Text('Test notification grouping'),
+),
 
 */

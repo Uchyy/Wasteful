@@ -2,6 +2,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:wasteful/core/widgets/shell.dart';
 import 'package:wasteful/data/model/schedule.dart';
+import 'package:wasteful/features/pizzaz/pizzaz.dart';
 import 'package:wasteful/features/schedule/add_schedule.dart';
 import 'package:wasteful/features/schedule/edit_schedule.dart';
 import 'package:wasteful/features/settings/app/notifications.dart';
@@ -26,6 +27,7 @@ class AppRoutes {
   static const termsOfService = '/terms-of-service';
   static const notification = '/notification';
   static const editSchedule = '/editSchedule';
+  static const pizzaz = '/pizzaz';
 }
 
 final appRouter = GoRouter(
@@ -77,6 +79,15 @@ final appRouter = GoRouter(
         final extra = state.extra as Map<String, dynamic>;
         return EditScheduleScreen(
           addressId: extra['addressId'] as String,
+          schedule: extra['schedule'] as Schedule,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.pizzaz,
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        return Pizzaz(
           schedule: extra['schedule'] as Schedule,
         );
       },
